@@ -1,0 +1,28 @@
+BEGIN: base station agent
+IPERF
+IPERF
+SEND_VIDEO
+IPERF
+IMAGE_LOCATION_QUICK
+IPERF
+IPERF
+[[-78.69617521897719, 35.72733029221068, 50], [-78.69623736409352, 35.726595222161095, 50], [-78.696408752346, 35.72571194564303, 50], [-78.6973526253702, 35.726055237430536, 50], [-78.69795148456693, 35.726651525320165, 50], [-78.69700418634478, 35.727035489295154, 50], [-78.69700418634478, 35.727035489295154, 0]]
+['IPERF', 'IPERF', 'SEND_VIDEO', 'IPERF', 'IMAGE_LOCATION_QUICK', 'IPERF', 'IPERF']
+UDP server up and listening
+mission
+Message from Drone:{'uuid': '8f1be2f6-2333-45ce-81fe-4bf4ef2b29da', 'type': 'mission', 'CUR_POS': (Lat:35.7273298 Lon:-78.6961699 Altitude:-0.017)}
+Drone IP Address:('192.168.106.1', 34267)
+['IPERF', 'IPERF', 'SEND_VIDEO', 'IPERF', 'IMAGE_LOCATION_QUICK', 'IPERF', 'IPERF']
+Dispatcher-- mission check[<flypawClasses.MissionObjective object at 0x7fede2118d30>, <flypawClasses.MissionObjective object at 0x7fede2118df0>, <flypawClasses.MissionObjective object at 0x7fede2118e80>, <flypawClasses.MissionObjective object at 0x7fede2118f10>, <flypawClasses.MissionObjective object at 0x7fede2118fa0>, <flypawClasses.MissionObjective object at 0x7fede2119030>, <flypawClasses.MissionObjective object at 0x7fede21190c0>]
+Pickle Packet Size: 1341
+Distance to Drone: 15.205018484203794 m
+acceptMission
+Message from Drone:{'uuid': 'e2510f2d-28ab-4eea-8b47-bc6f1334717c', 'type': 'acceptMission', 'CUR_POS': (Lat:35.7273298 Lon:-78.6961699 Altitude:-0.017)}
+Drone IP Address:('192.168.106.1', 52704)
+Pickle Packet Size: 352
+Distance to Drone: 15.205018484203794 m
+resourceInfo
+Message from Drone:{'uuid': '9a2aca4a-15ab-4427-8e7f-c135690b4c1f', 'type': 'resourceInfo', 'CUR_POS': (Lat:35.7273298 Lon:-78.6961699 Altitude:-0.017)}
+Drone IP Address:('192.168.106.1', 33067)
+Pickle Packet Size: 337
+Distance to Drone: 15.205018484203794 m
