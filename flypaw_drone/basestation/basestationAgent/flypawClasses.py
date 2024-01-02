@@ -430,7 +430,12 @@ class SpeculativeProduct(object):
         priority = self.Priority
         bestSolution:Solution = self.Solutions[0]
         
+        print(f"{len(self.Solutions)} solutions!")
+        print([x.DecisionStack for x in self.Solutions])
         for sol in self.Solutions:
+            if len(sol.DecisionStack) == 0:
+                continue
+            print(f"SOL: {sol.OptionNumber}")
             if(priority == "DISTANCE"):
                 if(sol.Distance<bestSolution.Distance):
                     bestSolution = sol
@@ -441,11 +446,13 @@ class SpeculativeProduct(object):
                 if(sol.Penalty.TotalPenalty()<bestSolution.Penalty.TotalPenalty()):
                     bestSolution = sol
         print("Based on "+ priority + " option #" + str(bestSolution.OptionNumber) + " is the optimal solution")#need a space here U.U
+        print(self.Solutions[bestSolution.OptionNumber].DecisionStack)
         self.ElectedSolution = bestSolution.OptionNumber
 
     def GetRecommendation(self):
         if(self.ElectedSolution > -1):
             return self.Solutions[self.ElectedSolution]
+        print("NO REC!")
         
 
 

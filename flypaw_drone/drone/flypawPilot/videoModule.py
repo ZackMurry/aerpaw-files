@@ -15,7 +15,6 @@ from Crypto.PublicKey import DSA
 from Crypto.Hash import SHA256
 from Crypto.Signature import DSS
 from base64 import b64encode, b64decode
-mavutil.set_dialect('common')
 
 
 """
@@ -31,10 +30,21 @@ out.release()
 """
 
 
-use_security = '-sec' in sys.argv
+use_security = True
+video_size = 'SM' # SM or LG
 key = b64decode('c8O9Xp7HcudRrY5KcnJdNZeQjAfdFrB4lVBkSjWI0hw=')
 
 private_key = None
+
+def get_config_str():
+    if use_security:
+        return f"SEC_{video_size}"
+    return f"NOSEC_{video_size}"
+
+max_repetitions = 1
+if video_size == 'LG':
+    max_repetitions = 10
+
 if use_security:
   with open('private_key_dsa.pem', "rb") as file1:
       private_key = DSA.import_key(file1.read(), 'MyPassphrase')
@@ -45,12 +55,17 @@ def create_signature(message):
   signature1 = signer.sign(message_hash)
   return signature1
 
+fps_results = []
+
+def get_fps_results():
+    return fps_results
 
 should_stop = Event()
 def sigint_handler(signum, frame):
   should_stop.set()
   print('SIGINT')
-  signal.signal(signal.SIGINT, sigint_handler)
+signal.signal(signal.SIGINT, sigint_handler)
+
 
 def send_image(conn, idx):
     
@@ -145,39 +160,28 @@ def send_image(conn, idx):
   #print('Sent image')
 
 
-def sendVideoToServer():        
-    x = uuid.uuid4()
-#        msg = {}
-#        msg['uuid'] = str(x)
-#        msg['type'] = "sendVideo"
-#        msg['sendVideo'] = {}
-#        msg['CUR_POS'] = self.currentPosition
-#        serverReply = udpClientMsg(msg, self.basestationIP, 20001, 1)
-#        if serverReply is not None:
-#            print(serverReply['uuid_received'])
-#            if serverReply['uuid_received'] == str(x):
-#                print(serverReply['type_received'] + " receipt confirmed by UUID")
-    # Send video to radio node port 14541
-
 def handle_client(conn):
   idx = 1
+  repetitions = 0
   t0 = time.time()
   while not should_stop.is_set():
     msg = conn.recv_msg()
     if msg is None:
       continue
     if idx > 514:
-    #if idx > 50:
-      conn.mav.camera_capture_status_send(
-          (int) (1000 * (time.time() - t0)), # timestamp
-          0, # image capturing status = idle
-          0, # video capturing status = idle
-          0, # image capture interval
-          0, # elapsed time since recording started = unavailable
-          0, # available storage capacity
-          0 # num images captured
-      )
-      break
+      repetitions += 1
+      if repetitions >= max_repetitions:
+          conn.mav.camera_capture_status_send(
+              (int) (1000 * (time.time() - t0)), # timestamp
+              0, # image capturing status = idle
+              0, # video capturing status = idle
+              0, # image capture interval
+              0, # elapsed time since recording started = unavailable
+              0, # available storage capacity
+              0 # num images captured
+          )
+          break
+      idx = 1
     # print(msg.get_type())
     if msg.get_type() == 'DATA_TRANSMISSION_HANDSHAKE':
       send_image(conn, idx)
@@ -193,7 +197,9 @@ def handle_client(conn):
     0 # num images captured
   )
   dt = time.time() - t0
-  print("%.2f FPS | Transferred %d frames in %.1f seconds" % (idx / dt, idx, dt))
+  fps = (idx * max_repetitions) / dt
+  print("%.2f FPS | Transferred %d frames in %.1f seconds" % (fps, idx * max_repetitions, dt))
+  fps_results.append(fps)
   conn.port.close()
 
 def print_summary(conn, delta_t):
@@ -212,15 +218,21 @@ def wait_heartbeat(conn):
       break
 
 
-conn = mavutil.mavlink_connection('tcp:192.168.106.2:14541')
-conn.mav.heartbeat_send(mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
-                                mavutil.mavlink.MAV_AUTOPILOT_INVALID,
-                                                        0, 0, 0)
+def vm_send_video():
+    mavutil.set_dialect('common')
+    conn = mavutil.mavlink_connection('tcp:192.168.106.2:14541')
+    conn.mav.heartbeat_send(mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
+                                    mavutil.mavlink.MAV_AUTOPILOT_INVALID,
+                                                            0, 0, 0)
 
-t0 = time.time()
-handle_client(conn)
+    t0 = time.time()
+    handle_client(conn)
 
-delta_t = time.time() - t0
-print_summary(conn, delta_t)
+    delta_t = time.time() - t0
+    print_summary(conn, delta_t)
+    mavutil.set_dialect('ardupilotmega')
+
+if __name__ == '__main__':
+    vm_send_video()
 
 

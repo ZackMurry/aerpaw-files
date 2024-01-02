@@ -1,3 +1,4 @@
+from videoModule import vm_send_video, get_fps_results, get_config_str
 from argparse import Action
 from ast import Str
 import asyncio
@@ -35,6 +36,9 @@ from aerpawlib.util import VectorNED, Coordinate
 from aerpawlib.vehicle import Vehicle
 from aerpawlib.vehicle import Drone
 from pymavlink import mavutil
+#sys.path.append('.')
+#from dummy import print_dummy
+#print_dummy()
 
 thisFileDir = os.path.realpath(os.path.dirname(__file__))
 flypawRootDir = os.path.realpath(os.path.join(thisFileDir , '..', '..'))
@@ -69,6 +73,9 @@ class FlyPawPilot(StateMachine):
         self.prometheusQueryURL = "http://" + self.basestationIP + ":9090/api/v1/query?query=" 
         #frame can be used for sendVideo or sendFrame depending on mission type
         self.frame = 1
+
+        # Custom
+        self.startTime = 0
 
         self.taskQ = TaskQueue()
         self.TaskIDGen = TaskIDGenerator() 
@@ -298,10 +305,10 @@ class FlyPawPilot(StateMachine):
         #check start time of mission, check current time, sleep diff
         #something here is not behaving as expected
         if not drone.armed:
-            print("drone not armed. Arming")
-            #time.sleep(5)
-            await drone.set_armed(True)
-            print("arming complete")
+            print("drone not armed!!!")
+            time.sleep(3)
+            #await drone.set_armed(True)
+            #print("arming complete")
         else:
             print("drone is already armed")
         """
@@ -345,6 +352,7 @@ class FlyPawPilot(StateMachine):
         except asyncio.TimeoutError as ex:
             print(ex)
         print("reached " + str(target_alt) + "m")
+        self.startTime = time.time()
         self.WaypointHistory.AddPoint(getCurrentPosition(drone),1)#pushes first point to WayPointHistory
         
         #you should be at default_waypoints[1] now
@@ -461,15 +469,6 @@ class FlyPawPilot(StateMachine):
         logState(self.logfiles['state'], "action")
         state = self.ActionStateMap(self.CurrentTask.task)
         return state
-
-
-        
-
-
-
-
-
-
     
     @state(name="flight")
     async def flight(self, drone: Drone):
@@ -483,6 +482,12 @@ class FlyPawPilot(StateMachine):
         ##set heading... unnecessary unless we want to have a heading other than the direction of motion 
         #drone.set_heading(bearing_from_here)
         print("Trying to fly...")
+        print(f"{self.CurrentTask.position.lat}, {self.CurrentTask.position.lon}")
+        print(f"Deltas: {abs(self.CurrentTask.position.lat - self.currentPosition.lat)}, {abs(self.CurrentTask.position.lon - self.currentPosition.lon)}")
+        if abs(self.CurrentTask.position.lat - self.currentPosition.lat) < 0.0001 and abs(self.CurrentTask.position.lon - self.currentPosition.lon) < 0.0001:
+            print("Already there!!!")
+            self.WatchDog.ActionComplete(self.CurrentTask)
+            return "waypoint_entry"
         await drone.goto_coordinates(defaultNextCoord)
         print("Ya...")
         self.WatchDog.ActionComplete(self.CurrentTask)
@@ -692,83 +697,12 @@ class FlyPawPilot(StateMachine):
     @state(name="sendVideo")
     async def sendVideo(self, _ ):
         print("------------------ SENDING VIDEO ------------------")
-        
-        x = uuid.uuid4()
-#        msg = {}
-#        msg['uuid'] = str(x)
-#        msg['type'] = "sendVideo"
-#        msg['sendVideo'] = {}
-#        msg['CUR_POS'] = self.currentPosition
-#        serverReply = udpClientMsg(msg, self.basestationIP, 20001, 1)
-#        if serverReply is not None:
-#            print(serverReply['uuid_received'])
-#            if serverReply['uuid_received'] == str(x):
-#                print(serverReply['type_received'] + " receipt confirmed by UUID")
-        # Send video to radio node port 14541
-        conn = mavutil.mavlink_connection('tcp:192.168.106.2:14541')
-        conn.mav.heartbeat_send(mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
-                                        mavutil.mavlink.MAV_AUTOPILOT_INVALID,
-                                                                0, 0, 0)
-        data_conn.mav.heartbeat_send(mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
-                    mavutil.mavlink.MAV_AUTOPILOT_INVALID,
-                        0, 0, 0)
-
-        while True:
-            msg = conn.recv_msg()
-            if msg is not None:
-                # print(msg.get_type()) # DATA_TRANSMISSION_HANDSHAKE
-                break
-
-            t0 = time.time()
-            t1 = time.time()
-            bytes_sent = 0
-            bytes_recv = 0
-
-            with open('/root/flypaw/flypawPilot/sample.mp4', 'rb') as image:
-                f = image.read()
-                b = bytearray(f)
-                print(len(b))
-                init_len = len(b)
-                # Request image
-                conn.mav.data_transmission_handshake_send(
-                    0, # Data stream type: JPEG
-                    len(b), # Total data size (ACK only)
-                    1280, # Width
-                    720, # Height
-                    math.ceil(len(b) / 253), # Number of packets being sent (ACK only)
-                    253, # Payload size per packet (ACK only)
-                    100 # JPEG quality
-                )
-                seqnr = 0 # Sequence number for chunk
-                t0 = time.time()
-                while len(b) > 0:
-                    # print(len(b))
-                    if len(b) < 253:
-                        print(f'Padding with {253 - len(b)} bytes')
-                    conn.mav.encapsulated_data_send(
-                        seqnr,
-                        b[0:253] if len(b) > 253 else b + bytearray((253 - len(b)) * [0])
-                    )
-                    seqnr += 1
-                    t2 = time.time()
-                    if len(b) >= 253:
-                        b = b[253:]
-                    else:
-                        break
-
-                    t0 = time.time() - t0
-                    print('Sent %d bytes of image data' % init_len)
-                    print("Overall: %u sent, %u received, %u errors bwin=%.1f kB/s bwout=%.1f kB/s" % (
-                        conn.mav.total_packets_sent,
-                        conn.mav.total_packets_received,
-                        conn.mav.total_receive_errors,
-                        0.001*(conn.mav.total_bytes_received)/t0,
-                        0.001*(conn.mav.total_bytes_sent)/t0))
-                                                                                                                                    
-        # All zero values to end transmission
-        conn.mav.data_transmission_handshake_send(0,0,0,0,0,0,0)
+        print(f"{self.currentPosition.lat}, {self.currentPosition.lon}")
+        vm_send_video()
         print("------------------ END VIDEO SEND ------------------")
-        return "nextAction"
+        self.WatchDog.ActionComplete(self.CurrentTask)
+        return "waypoint_entry"
+        #return "nextAction"
 
         
     @state(name="collectVideo")
@@ -851,6 +785,17 @@ class FlyPawPilot(StateMachine):
             if serverReply['uuid_received'] == str(x):
                 print(serverReply['type_received'] + " receipt confirmed by UUID")
         print("exiting")
+
+        endTime = time.time()
+        time_str = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")
+        config_str = get_config_str()
+        with open(f"/root/Results/{time_str}__{config_str}_DATA.txt", 'w') as experiment_log:
+            experiment_log.write(f"Start time: {self.startTime}\n")
+            experiment_log.write(f"End time: {endTime}\n")
+            experiment_log.write(f"Delta time: {endTime - self.startTime}\n")
+            fps_results = get_fps_results()
+            for i in range(4):
+                experiment_log.write(f"FPS {i}: {fps_results[i]}\n")
         sys.exit()
         
 
@@ -1088,6 +1033,11 @@ class FlyPawPilot(StateMachine):
             t.comms_required = True
             taskList.append(t)
         elif objectiveType == "SEND_VIDEO":
+            #t = Task(objective.Waypoint, "SEND_VIDEO", 0, 0, self.TaskIDGen.Get())
+            #t.comms_required = True
+            #taskList.append(t)
+            taskList.append(Task(objective.Waypoint,"FLIGHT",0,0,self.TaskIDGen.Get()))
+            #taskList.append(Task(objective.Waypoint,"SEND_VIDEO",0,0,self.TaskIDGen.Get()))
             t = Task(objective.Waypoint, "SEND_VIDEO", 0, 0, self.TaskIDGen.Get())
             t.comms_required = True
             taskList.append(t)
@@ -1149,7 +1099,12 @@ class FlyPawPilot(StateMachine):
 
 
             recommendedSolution:Solution = currentSpecSolution.GetRecommendation()
-            rec = recommendedSolution.DecisionStack[0]## Should this be 0?
+            print(recommendedSolution.DecisionStack)
+            if recommendedSolution.DecisionStack == None or len(recommendedSolution.DecisionStack) == 0:
+                print("LEN = 0")
+                rec = 'BLOCK'
+            else:
+                rec = recommendedSolution.DecisionStack[0]## Should this be 0?
             print("Recommended Solution: " + rec)
 
             if(rec == "LOF"):
