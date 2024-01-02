@@ -1,28 +1,230 @@
 BEGIN: base station agent
-IPERF
-IPERF
+SEND_VIDEO
+SEND_VIDEO
+SEND_VIDEO
 SEND_VIDEO
 IPERF
-IMAGE_LOCATION_QUICK
-IPERF
-IPERF
-[[-78.69617521897719, 35.72733029221068, 50], [-78.69623736409352, 35.726595222161095, 50], [-78.696408752346, 35.72571194564303, 50], [-78.6973526253702, 35.726055237430536, 50], [-78.69795148456693, 35.726651525320165, 50], [-78.69700418634478, 35.727035489295154, 50], [-78.69700418634478, 35.727035489295154, 0]]
-['IPERF', 'IPERF', 'SEND_VIDEO', 'IPERF', 'IMAGE_LOCATION_QUICK', 'IPERF', 'IPERF']
+[[-78.69617521897719, 35.72733029221068, 50], [-78.69623736409352, 35.726595222161095, 50], [-78.696408752346, 35.72571194564303, 50], [-78.69623736409352, 35.726595222161095, 50], [-78.69623736409352, 35.726595222161095, 0]]
+['SEND_VIDEO', 'SEND_VIDEO', 'SEND_VIDEO', 'SEND_VIDEO', 'IPERF']
 UDP server up and listening
+Waiting for message...
+Received message!
 mission
-Message from Drone:{'uuid': '8f1be2f6-2333-45ce-81fe-4bf4ef2b29da', 'type': 'mission', 'CUR_POS': (Lat:35.7273298 Lon:-78.6961699 Altitude:-0.017)}
-Drone IP Address:('192.168.106.1', 34267)
-['IPERF', 'IPERF', 'SEND_VIDEO', 'IPERF', 'IMAGE_LOCATION_QUICK', 'IPERF', 'IPERF']
-Dispatcher-- mission check[<flypawClasses.MissionObjective object at 0x7fede2118d30>, <flypawClasses.MissionObjective object at 0x7fede2118df0>, <flypawClasses.MissionObjective object at 0x7fede2118e80>, <flypawClasses.MissionObjective object at 0x7fede2118f10>, <flypawClasses.MissionObjective object at 0x7fede2118fa0>, <flypawClasses.MissionObjective object at 0x7fede2119030>, <flypawClasses.MissionObjective object at 0x7fede21190c0>]
-Pickle Packet Size: 1341
+Message from Drone:{'uuid': 'f0b06eb2-d878-4f76-b410-f8ca9c08849a', 'type': 'mission', 'CUR_POS': (Lat:35.7273298 Lon:-78.6961699 Altitude:-0.017)}
+Drone IP Address:('192.168.106.1', 51066)
+['SEND_VIDEO', 'SEND_VIDEO', 'SEND_VIDEO', 'SEND_VIDEO', 'IPERF']
+Dispatcher-- mission check[<flypawClasses.MissionObjective object at 0x7f598bcbcd90>, <flypawClasses.MissionObjective object at 0x7f598bcbce50>, <flypawClasses.MissionObjective object at 0x7f598bcbcee0>, <flypawClasses.MissionObjective object at 0x7f598bcbcf70>, <flypawClasses.MissionObjective object at 0x7f598bcbd000>]
+Pickle Packet Size: 1153
 Distance to Drone: 15.205018484203794 m
+Waiting for message...
+Received message!
 acceptMission
-Message from Drone:{'uuid': 'e2510f2d-28ab-4eea-8b47-bc6f1334717c', 'type': 'acceptMission', 'CUR_POS': (Lat:35.7273298 Lon:-78.6961699 Altitude:-0.017)}
-Drone IP Address:('192.168.106.1', 52704)
+Message from Drone:{'uuid': '8aa5578e-f129-4e94-a296-80f70e65a43c', 'type': 'acceptMission', 'CUR_POS': (Lat:35.7273298 Lon:-78.6961699 Altitude:-0.017)}
+Drone IP Address:('192.168.106.1', 54952)
 Pickle Packet Size: 352
 Distance to Drone: 15.205018484203794 m
+Waiting for message...
+Received message!
 resourceInfo
-Message from Drone:{'uuid': '9a2aca4a-15ab-4427-8e7f-c135690b4c1f', 'type': 'resourceInfo', 'CUR_POS': (Lat:35.7273298 Lon:-78.6961699 Altitude:-0.017)}
-Drone IP Address:('192.168.106.1', 33067)
+Message from Drone:{'uuid': '8b3978bb-48ac-42c3-8343-63704bd295cf', 'type': 'resourceInfo', 'CUR_POS': (Lat:35.7273298 Lon:-78.6961699 Altitude:-0.017)}
+Drone IP Address:('192.168.106.1', 34956)
 Pickle Packet Size: 337
 Distance to Drone: 15.205018484203794 m
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': '92869cca-f90f-444b-8c3c-00163d474c73', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.7273298 Lon:-78.6961699 Altitude:22.545), 'battery': <flypawClasses.Battery object at 0x7f598bcbd120>, 'heading': 359, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.7273298 Lon:-78.6961699 Altitude:22.545)}
+Drone IP Address:('192.168.106.1', 56992)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 15.205018484203794 m
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': 'db918fb9-c867-4219-8193-f4d115562be6', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.7273299, -78.69617, 30.686, '2024-01-02T14:05:06-05:00'], 'heading': [0], 'connection': 'ok', 'mbps': 21536.02097964797, 'retransmits': 0, 'unixsecs': 1704222302, 'meanrtt': 44}, 'CUR_POS': (Lat:35.7273298 Lon:-78.6961699 Altitude:22.545)}
+Drone IP Address:('192.168.106.1', 56139)
+Pickle Packet Size: 323
+Distance to Drone: 15.205018484203794 m
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': 'e4ae73d9-8064-4b59-bd00-ed34bd8b1ba8', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.7273299 Lon:-78.69617 Altitude:30.686), 'battery': <flypawClasses.Battery object at 0x7f598bf9f670>, 'heading': 0, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.7273299 Lon:-78.69617 Altitude:30.686)}
+Drone IP Address:('192.168.106.1', 38271)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 15.201480385162206 m
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': '8852de28-0fb3-4ac8-9aa8-df2ee18b07e7', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.7273299, -78.69617, 38.794, '2024-01-02T14:05:09-05:00'], 'heading': [0], 'connection': 'ok', 'mbps': 21850.46655034322, 'retransmits': 43, 'unixsecs': 1704222306, 'meanrtt': 44}, 'CUR_POS': (Lat:35.7273299 Lon:-78.69617 Altitude:30.686)}
+Drone IP Address:('192.168.106.1', 51228)
+Pickle Packet Size: 323
+Distance to Drone: 15.201480385162206 m
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': '42d23ff8-b037-4b26-84d6-038b3addddf0', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.7273299 Lon:-78.69617 Altitude:47.534), 'battery': <flypawClasses.Battery object at 0x7f598bcbd0f0>, 'heading': 0, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.7273299 Lon:-78.69617 Altitude:47.534)}
+Drone IP Address:('192.168.106.1', 58334)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 15.201480385162206 m
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': '0afc60a1-a1d4-40ae-b8fb-1e3186f7ebab', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.7273299, -78.69617, 49.99, '2024-01-02T14:05:16-05:00'], 'heading': [0], 'connection': 'ok', 'mbps': 21414.532039342375, 'retransmits': 0, 'unixsecs': 1704222312, 'meanrtt': 43}, 'CUR_POS': (Lat:35.7273299 Lon:-78.69617 Altitude:47.534)}
+Drone IP Address:('192.168.106.1', 50265)
+Pickle Packet Size: 323
+Distance to Drone: 15.201480385162206 m
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': '16786795-3b8d-4050-8a64-9ebd1b8f8b02', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.7266107 Lon:-78.6962359 Altitude:49.997), 'battery': <flypawClasses.Battery object at 0x7f598bf9f040>, 'heading': 0, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.7266107 Lon:-78.6962359 Altitude:49.997)}
+Drone IP Address:('192.168.106.1', 57955)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 93.23026596292763 m
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': '5077eae5-0716-45d4-8aae-6ba1951f92d7', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.7265929, -78.6962373, 50.002, '2024-01-02T14:05:34-05:00'], 'heading': [186], 'connection': 'ok', 'mbps': 20781.608936246088, 'retransmits': 0, 'unixsecs': 1704222331, 'meanrtt': 54}, 'CUR_POS': (Lat:35.7266107 Lon:-78.6962359 Altitude:49.997)}
+Drone IP Address:('192.168.106.1', 52343)
+Pickle Packet Size: 323
+Distance to Drone: 93.23026596292763 m
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': 'f4c5a77a-e5a0-418e-ad07-62d75791f3ff', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.7265976 Lon:-78.6962365 Altitude:50.0), 'battery': <flypawClasses.Battery object at 0x7f598bcbd090>, 'heading': 186, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.7265976 Lon:-78.6962365 Altitude:50.0)}
+Drone IP Address:('192.168.106.1', 53901)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 94.67371377043851 m
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': '07831ff9-b717-4c7f-bdcd-e453a3cdcbac', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.726598, -78.6962365, 50.0, '2024-01-02T14:05:41-05:00'], 'heading': [186], 'connection': 'ok', 'mbps': 22013.34277193642, 'retransmits': 0, 'unixsecs': 1704222338, 'meanrtt': 48}, 'CUR_POS': (Lat:35.7265976 Lon:-78.6962365 Altitude:50.0)}
+Drone IP Address:('192.168.106.1', 35077)
+Pickle Packet Size: 323
+Distance to Drone: 94.67371377043851 m
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': 'd9e6a6e9-b83a-43fe-a715-c306c3a9fd00', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.725728 Lon:-78.6964067 Altitude:49.992), 'battery': <flypawClasses.Battery object at 0x7f598bf9f670>, 'heading': 186, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.725728 Lon:-78.6964067 Altitude:49.992)}
+Drone IP Address:('192.168.106.1', 60249)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 192.38026162967302 m
+Too far...SimulatingBrokenConnection!
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': '8a2aa813-4f4e-4784-8262-41912cb525c3', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.725709, -78.69641, 49.999, '2024-01-02T14:06:00-05:00'], 'heading': [190], 'connection': 'ok', 'mbps': 21778.8397839955, 'retransmits': 0, 'unixsecs': 1704222357, 'meanrtt': 52}, 'CUR_POS': (Lat:35.7257087 Lon:-78.6964104 Altitude:49.995)}
+Drone IP Address:('192.168.106.1', 37255)
+Pickle Packet Size: 323
+Distance to Drone: 194.54766330004296 m
+Too far...SimulatingBrokenConnection!
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': '8ceeb6f7-0766-4197-bb7b-34ac72eaff50', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.7265983 Lon:-78.6962388 Altitude:49.983), 'battery': <flypawClasses.Battery object at 0x7f598bcbd060>, 'heading': 190, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.7265983 Lon:-78.6962388 Altitude:49.983)}
+Drone IP Address:('192.168.106.1', 48651)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 94.63039573194422 m
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': 'aa13e39a-180b-4d5b-bb17-8650bfb58903', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.7266168, -78.6962356, 49.987, '2024-01-02T14:06:23-05:00'], 'heading': [13], 'connection': 'ok', 'mbps': 21813.561204642923, 'retransmits': 0, 'unixsecs': 1704222379, 'meanrtt': 37}, 'CUR_POS': (Lat:35.7265983 Lon:-78.6962388 Altitude:49.983)}
+Drone IP Address:('192.168.106.1', 50866)
+Pickle Packet Size: 323
+Distance to Drone: 94.63039573194422 m
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': 'd9b59201-48df-425e-8f53-74b53db0750e', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.7266121 Lon:-78.696237 Altitude:49.988), 'battery': <flypawClasses.Battery object at 0x7f598bf9f040>, 'heading': 13, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.7266121 Lon:-78.696237 Altitude:49.988)}
+Drone IP Address:('192.168.106.1', 46800)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 93.09306054895437 m
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': 'fb69a750-cc13-41c4-aeba-31026d84be5d', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.7266117, -78.696237, 49.989, '2024-01-02T14:06:30-05:00'], 'heading': [13], 'connection': 'ok', 'mbps': 21704.46879552538, 'retransmits': 0, 'unixsecs': 1704222386, 'meanrtt': 45}, 'CUR_POS': (Lat:35.7266121 Lon:-78.696237 Altitude:49.988)}
+Drone IP Address:('192.168.106.1', 37730)
+Pickle Packet Size: 323
+Distance to Drone: 93.09306054895437 m
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': 'c80ba568-e742-4af8-ad44-09e625b7f365', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.7257229 Lon:-78.6964072 Altitude:49.978), 'battery': <flypawClasses.Battery object at 0x7f598bcbd150>, 'heading': 13, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.7257229 Lon:-78.6964072 Altitude:49.978)}
+Drone IP Address:('192.168.106.1', 54089)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 192.9461560095596 m
+Too far...SimulatingBrokenConnection!
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': '58f25841-80f6-4027-9f2d-1349c97646ce', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.7257059, -78.6964099, 49.987, '2024-01-02T14:06:53-05:00'], 'heading': [191], 'connection': 'ok', 'mbps': 22125.91110823782, 'retransmits': 0, 'unixsecs': 1704222410, 'meanrtt': 44}, 'CUR_POS': (Lat:35.7257047 Lon:-78.6964106 Altitude:49.983)}
+Drone IP Address:('192.168.106.1', 38122)
+Pickle Packet Size: 323
+Distance to Drone: 194.98875440055556 m
+Too far...SimulatingBrokenConnection!
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': 'f6d3fef5-6515-483b-b44e-805c8ef342b9', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.7265817 Lon:-78.6962398 Altitude:49.99), 'battery': <flypawClasses.Battery object at 0x7f598bf9f670>, 'heading': 191, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.7265817 Lon:-78.6962398 Altitude:49.99)}
+Drone IP Address:('192.168.106.1', 57749)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 96.46291299024018 m
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': '1339523c-8117-456c-b4f0-0e75cb11a643', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.7266044, -78.6962356, 49.997, '2024-01-02T14:07:17-05:00'], 'heading': [11], 'connection': 'ok', 'mbps': 21684.996577148147, 'retransmits': 0, 'unixsecs': 1704222433, 'meanrtt': 50}, 'CUR_POS': (Lat:35.7265817 Lon:-78.6962398 Altitude:49.99)}
+Drone IP Address:('192.168.106.1', 59785)
+Pickle Packet Size: 323
+Distance to Drone: 96.46291299024018 m
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': 'a12a7790-1adc-4cf6-88a8-d73ae9cf7ecf', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.7265993 Lon:-78.6962371 Altitude:50.0), 'battery': <flypawClasses.Battery object at 0x7f598bcbd120>, 'heading': 11, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.7265993 Lon:-78.6962371 Altitude:50.0)}
+Drone IP Address:('192.168.106.1', 35661)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 94.49616929695965 m
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': '5e3ecbc3-4dbc-426f-9be1-737906821c6e', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.7265989, -78.696237, 50.0, '2024-01-02T14:07:24-05:00'], 'heading': [11], 'connection': 'ok', 'mbps': 21841.925992878445, 'retransmits': 0, 'unixsecs': 1704222440, 'meanrtt': 38}, 'CUR_POS': (Lat:35.7265993 Lon:-78.6962371 Altitude:50.0)}
+Drone IP Address:('192.168.106.1', 55439)
+Pickle Packet Size: 323
+Distance to Drone: 94.49616929695965 m
+Waiting for message...
+Received message!
+telemetry
+Message from Drone:{'uuid': 'ff799321-5983-4532-a692-00eed86db0ec', 'type': 'telemetry', 'telemetry': {'position': (Lat:35.7265989 Lon:-78.696237 Altitude:50.0), 'battery': <flypawClasses.Battery object at 0x7f598bf9f040>, 'heading': 11, 'home': [35.7273298, -78.6961699, -0.017], 'nextWaypoint': []}, 'CUR_POS': (Lat:35.7265989 Lon:-78.696237 Altitude:50.0)}
+Drone IP Address:('192.168.106.1', 38691)
+update self coordinates
+Pickle Packet Size: 320
+Distance to Drone: 94.53853311758556 m
+Waiting for message...
+Received message!
+iperfResults
+Message from Drone:{'uuid': '362d2999-d49c-45dd-8281-8c3cdb2a6e69', 'type': 'iperfResults', 'iperfResults': {'ipaddr': '192.168.106.2', 'port': 5201, 'protocol': 'tcp', 'location4d': [35.7265987, -78.6962369, 50.002, '2024-01-02T14:07:27-05:00'], 'heading': [11], 'connection': 'ok', 'mbps': 21978.3368105872, 'retransmits': 0, 'unixsecs': 1704222444, 'meanrtt': 41}, 'CUR_POS': (Lat:35.7265989 Lon:-78.696237 Altitude:50.0)}
+Drone IP Address:('192.168.106.1', 41205)
+Pickle Packet Size: 323
+Distance to Drone: 94.53853311758556 m
+Waiting for message...
+Received message!
+abortMission
+Message from Drone:{'uuid': 'e0515781-01e3-4fae-b211-97cda060cd4a', 'type': 'abortMission', 'CUR_POS': (Lat:35.7265989 Lon:-78.696237 Altitude:50.0)}
+Drone IP Address:('192.168.106.1', 60113)
+mission abort... prepare for landing
+Pickle Packet Size: 323
+Distance to Drone: 94.53853311758556 m
+Waiting for message...
+Received message!
+completed
+Message from Drone:{'uuid': '2296c046-8cda-47bc-85fc-13ec45f90b4c', 'type': 'completed', 'CUR_POS': (Lat:35.7265989 Lon:-78.696237 Altitude:50.0)}
+Drone IP Address:('192.168.106.1', 50223)
+flight complete

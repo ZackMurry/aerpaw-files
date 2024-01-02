@@ -17,6 +17,7 @@ from Crypto.Hash import SHA256
 from Crypto.Signature import DSS
 
 
+print('Starting video module...')
 conn = mavutil.mavlink_connection('tcpin::14541')
 
 should_stop = Event()
@@ -26,7 +27,8 @@ def sigint_handler(signum, frame):
 
 signal.signal(signal.SIGINT, sigint_handler)
 
-use_security = '-sec' in sys.argv
+use_security = False
+
 key = b64decode('c8O9Xp7HcudRrY5KcnJdNZeQjAfdFrB4lVBkSjWI0hw=')
 
 public_key = None
@@ -185,8 +187,8 @@ def refresh_conn(conn):
 
 is_first_run = True
 while not should_stop.is_set():
-    if not is_first_run:
-        print('refreshing conn')
+#    if not is_first_run:
+#        print('refreshing conn')
         #conn = refresh_conn(conn)
         #print(dir(serial))
         #print(serial)
@@ -194,9 +196,8 @@ while not should_stop.is_set():
         #print(conn.listen_addr)
         #conn.listen.bind(conn.listen_addr)
         #print(conn)
-    else:
-        is_first_run = False
-        wait_heartbeat(conn)
+#    else: is_first_run = False
+    wait_heartbeat(conn)
     if should_stop.is_set():
         break
     print('Heartbeat received!')

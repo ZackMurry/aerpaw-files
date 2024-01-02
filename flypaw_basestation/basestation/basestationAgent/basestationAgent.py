@@ -311,7 +311,7 @@ class FlyPawBasestationAgent(object):
         mission.missionType = "fire" #"bandwidth", "videography", "fire"
         mission.missionLeader = "basestation" #drone or basestation or cloud
         mission.priority = 1
-        mission.planfile = "./plans/VIMAN_simplePlan_TaskQ.plan"
+        mission.planfile = "./plans/SHORT_VIMAN_simplePlan_TaskQ.plan"
         mission.default_waypoints = []
         plan = getPlanFromPlanfile(mission.planfile)
         processedPlan = processPlan(plan)
@@ -690,7 +690,9 @@ class FlyPawBasestationAgent(object):
 
         while(True):
             msgFromServer = {}
+            print("Waiting for message...")
             bytesAddressPair = UDPServerSocket.recvfrom(self.chunkSize)
+            print("Received message!")
             serialClientMessage = bytesAddressPair[0]
             address = bytesAddressPair[1]
             try:
