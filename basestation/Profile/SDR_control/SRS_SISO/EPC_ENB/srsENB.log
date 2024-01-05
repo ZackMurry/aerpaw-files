@@ -1,0 +1,20 @@
+[2021-07-13 13:06:46.856948] ---  Software Radio Systems LTE eNodeB  ---
+[2021-07-13 13:06:46.857017] 
+[2021-07-13 13:06:46.857034] Reading configuration file /root/.config/srsran/enb.conf...
+[2021-07-13 13:06:46.857047] WARNING: cpu0 scaling governor is not set to performance mode. Realtime processing could be compromised. Consider setting it to performance mode before running the application.
+[2021-07-13 13:06:46.857058] 
+[2021-07-13 13:06:46.857069] Built in Release mode using commit 1c6dd8c4a on branch HEAD.
+[2021-07-13 13:06:46.857080] 
+[2021-07-13 13:06:46.874658] Opening 1 channels in RF device=default with args=default
+[2021-07-13 13:06:49.186744] Opening USRP channels=1, args: type=b200,master_clock_rate=23.04e6
+[2021-07-13 13:06:49.186924] Setting frequency: DL=2635.0 Mhz, UL=2515.0 MHz for cc_idx=0 nof_prb=100
+[2021-07-13 13:06:49.255490] 
+[2021-07-13 13:06:49.255535] ==== eNodeB started ===
+[2021-07-13 13:06:49.255552] Type <t> to view trace
+[2021-07-13 13:07:36.713456] RACH:  tti=6261, cc=0, preamble=32, offset=1, temp_crnti=0x46
+[2021-07-13 13:07:36.713570] RACH:  tti=6261, cc=0, preamble=35, offset=7, temp_crnti=0x47
+[2021-07-13 13:07:36.713608] RACH:  tti=6261, cc=0, preamble=62, offset=31, temp_crnti=0x48
+[2021-07-13 13:07:36.793035] Disconnecting rnti=0x48.
+[2021-07-13 13:07:36.793128] Disconnecting rnti=0x47.
+[2021-07-13 13:07:36.901068] User 0x46 connected
+[2021-07-13 13:07:43.991936] Disconnecting rnti=0x46.

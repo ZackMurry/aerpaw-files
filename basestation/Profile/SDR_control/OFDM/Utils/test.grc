@@ -1,0 +1,182 @@
+options:
+  parameters:
+    author: ''
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: no_gui
+    hier_block_src_path: '.:'
+    id: test
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: prompt
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Not titled yet
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 8]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '2000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: blocks_file_sink_0
+  id: blocks_file_sink
+  parameters:
+    affinity: ''
+    alias: ''
+    append: 'False'
+    comment: ''
+    file: out.txt
+    type: byte
+    unbuffered: 'False'
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [656, 76.0]
+    rotation: 0
+    state: true
+- name: blocks_throttle_0
+  id: blocks_throttle
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ignoretag: 'True'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    samples_per_second: samp_rate
+    type: byte
+    vlen: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [408, 280.0]
+    rotation: 0
+    state: true
+- name: epy_block_0
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nEmbedded Python Blocks:\n\nEach time this file is saved,\
+      \ GRC will instantiate the first class it finds\nto get ports and parameters\
+      \ of your block. The arguments to __init__  will\nbe the parameters. All of\
+      \ them are required to have default values!\n\"\"\"\n\nimport numpy as np\n\
+      import codecs\nfrom gnuradio import gr\n\n\nclass blk(gr.sync_block):  \n  \
+      \  \"\"\"Just prints to stdout the bytes it receives (as UTF-8 characters)\"\
+      \"\"\n\n    def __init__(self):  # No parameters\n        \"\"\"arguments to\
+      \ this function show up as parameters in GRC\"\"\"\n        gr.sync_block.__init__(\n\
+      \            self,\n            name='Print',    # will show up in GRC\n   \
+      \         in_sig=[np.byte], # takes in bytes\n            out_sig=None     #\
+      \ no output\n        )\n\n    def work(self, input_items, output_items):\n \
+      \       dataBytes = bytes(input_items[0]) # converts to an array of bytes\n\
+      \        str = dataBytes.decode(encoding='UTF-8')  # converts to string\n  \
+      \      print(str,end='')\n        return len(input_items[0])\n\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: ('Print', 'blk', [], [('0', 'byte', 1)], [], 'Just prints to stdout
+      the bytes it receives (as UTF-8 characters)', [])
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [712, 424.0]
+    rotation: 0
+    state: enabled
+- name: epy_block_1
+  id: epy_block
+  parameters:
+    _source_code: "\"\"\"\nEmbedded Python Blocks:\n\nEach time this file is saved,\
+      \ GRC will instantiate the first class it finds\nto get ports and parameters\
+      \ of your block. The arguments to __init__  will\nbe the parameters. All of\
+      \ them are required to have default values!\n\"\"\"\n\nimport numpy as np\n\
+      from gnuradio import gr\n\nWORK_DONE = -1 # GRC magic value to stop a block\
+      \ from being queried\n\nclass blk(gr.sync_block):  \n    \"\"\" Sequence number\
+      \ traffic generator: \n        - generates maxCount sequence numbers of length\n\
+      \          digits each (plus a <cr> at the end of each sequence number)\n  \
+      \  \"\"\"\n\n    def __init__(self, maxCount=2000 , digits=9): \n        gr.sync_block.__init__(\n\
+      \            self,\n            name='Generator',   # will show up in GRC\n\
+      \            in_sig=None,        # no inputs\n            out_sig=[np.byte]\
+      \   # spits out bytes\n        )\n        self._maxCount = maxCount # how many\
+      \ lines of output will be generated\n        self._counter = 0 # this is the\
+      \ current counter\n        self._done = False # True when we're done counting\n\
+      \        self._digits = digits # how many digits for each sequence number\n\
+      \        self._leftOver = [] # handles short requests\n\n    def work(self,\
+      \ input_items, output_items):\n\n        stringLength = self._digits+1  # how\
+      \ long is each string\n        howManyNeeded = len(output_items[0])\n      \
+      \  numbers = int(np.floor(howManyNeeded/(stringLength)))\n        howManyWillGive=numbers*(stringLength)\n\
+      \        fmt='%'+\"0%dd\\n\"%(self._digits)\n\n        if len(self._leftOver)\
+      \ > 0:  # we have bytes left over\n            offset = len(self._leftOver)\n\
+      \            output_items[0][0:offset]=self._leftOver\n            self._leftOver=[]\n\
+      #            print(f\"Returing left overs {offset}\")\n            return offset\n\
+      \            \n        if self._done:\n#            print(\"I'm done!\")\n \
+      \           return WORK_DONE\n\n#        print(f\"It wants {howManyNeeded}\"\
+      )\n#        print(f\"I'll give it {howManyWillGive}\")\n\n        for i in range(numbers):\
+      \ # only executed when numbers > 0\n            str=fmt%self._counter\n    \
+      \        daBytes = np.fromstring(str,dtype=np.byte)\n            output_items[0][i*stringLength:(i+1)*stringLength]=daBytes\n\
+      \            self._counter=self._counter+1\n            if self._counter >=\
+      \ self._maxCount:\n                self._done = True\n#                print(f\"\
+      No more, returning {(i+1)*stringLength}\")\n                return (i+1)*stringLength\n\
+      \n        if (numbers==0): # it wants less than one sequence number\n      \
+      \      str=fmt%self._counter\n            daBytes = np.fromstring(str,dtype=np.byte)\n\
+      \            output_items[0][:]=daBytes[0:howManyNeeded]\n            self._leftOver=daBytes[howManyNeeded:]\n\
+      \            self._counter=self._counter+1\n            if self._counter >=\
+      \ self._maxCount:\n                self._done = True\n#            print(f\"\
+      Returning {howManyNeeded}\")\n            return howManyNeeded\n        else:\n\
+      \            self._leftOver = []\n#            print(f\"Lots more, returning\
+      \ {(i+1)*stringLength}\")\n            return (i+1)*stringLength\n\n"
+    affinity: ''
+    alias: ''
+    comment: ''
+    digits: '9'
+    maxCount: '30000'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    _io_cache: '(''Generator'', ''blk'', [(''maxCount'', ''2000''), (''digits'', ''9'')],
+      [], [(''0'', ''byte'', 1)], '' Sequence number traffic generator: \n        -
+      generates maxCount sequence numbers of length\n          digits each (plus a
+      <cr> at the end of each sequence number)\n    '', [])'
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [120, 272.0]
+    rotation: 0
+    state: true
+
+connections:
+- [blocks_throttle_0, '0', blocks_file_sink_0, '0']
+- [blocks_throttle_0, '0', epy_block_0, '0']
+- [epy_block_1, '0', blocks_throttle_0, '0']
+
+metadata:
+  file_format: 1

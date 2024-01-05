@@ -1,0 +1,4 @@
+export AERPAW_REPO=/root/AERPAW-Dev
+export AERPAW_PYTHON=python3
+export LAUNCH_MODE=EMULATION
+export EXP_NUMBER=1

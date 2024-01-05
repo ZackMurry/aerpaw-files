@@ -1,0 +1,38 @@
+diff --git a/cmake_targets/tools/build_helper b/cmake_targets/tools/build_helper
+index da5dfbe74b..247afcacb6 100755
+--- a/cmake_targets/tools/build_helper
++++ b/cmake_targets/tools/build_helper
+@@ -40,7 +40,7 @@ esac
+ KERNEL_VERSION=$(uname -r | cut -d '.' -f1)
+ KERNEL_MAJOR=$(uname -r | cut -d '.' -f2)
+ 
+-SUDO='sudo -E'
++SUDO=''
+ 
+ ###############################
+ ## echo and  family
+@@ -216,9 +216,9 @@ install_protobuf_from_source(){
+     #wget https://github.com/google/protobuf/releases/download/v2.6.1/protobuf-2.6.1.tar.gz
+     #tar -xzvf protobuf-2.6.1.tar.gz --owner $USER --group $USER --no-same-owner
+     #cd protobuf-2.6.1/
+-    rm -rf /tmp/protobuf-cpp-3.3.0.tar.gz* /tmp/protobuf-3.3.0
++    #rm -rf /tmp/protobuf-cpp-3.3.0.tar.gz* /tmp/protobuf-3.3.0
+     wget https://github.com/google/protobuf/releases/download/v3.3.0/protobuf-cpp-3.3.0.tar.gz
+-    tar -xzvf protobuf-cpp-3.3.0.tar.gz --owner $USER --group $(groups | cut -d" " -f1) --no-same-owner
++    tar -xzvf protobuf-cpp-3.3.0.tar.gz --group $(groups | cut -d" " -f1) --no-same-owner
+     cd protobuf-3.3.0/
+     ./configure
+     echo "Compiling protobuf"
+@@ -355,9 +355,9 @@ install_bladerf_driver_from_source(){
+     cd /tmp/bladeRF
+     wget https://www.nuand.com/fx3/bladeRF_fw_latest.img
+     wget https://www.nuand.com/fpga/hostedx40-latest.rbf
+-    sudo mkdir -p /usr/share/Nuand/bladeRF
+-    sudo mv bladeRF_fw_latest.img /usr/share/Nuand/bladeRF/bladeRF_fw.img
+-    sudo mv hostedx40-latest.rbf /usr/share/Nuand/bladeRF/hostedx40.rbf
++    mkdir -p /usr/share/Nuand/bladeRF
++    mv bladeRF_fw_latest.img /usr/share/Nuand/bladeRF/bladeRF_fw.img
++    mv hostedx40-latest.rbf /usr/share/Nuand/bladeRF/hostedx40.rbf
+     ) >& $bladerf_install_log
+ }
+ 
