@@ -1,4 +1,4 @@
-from videoModule import vm_send_video, get_fps_results, get_config_str
+from videoModule import vm_send_video, get_fps_results, get_config_str, get_bandwidth_results, get_time_results
 from argparse import Action
 from ast import Str
 import asyncio
@@ -794,8 +794,12 @@ class FlyPawPilot(StateMachine):
             experiment_log.write(f"End time: {endTime}\n")
             experiment_log.write(f"Delta time: {endTime - self.startTime}\n")
             fps_results = get_fps_results()
-            for i in range(4):
+            bw_results = get_bandwidth_results()
+            time_results = get_time_results()
+            for i in range(3):
                 experiment_log.write(f"FPS {i}: {fps_results[i]}\n")
+                experiment_log.write(f"BW (kb/s) {i}: {bw_results[i]}\n")
+                experiment_log.write(f"Time (s) {i}: {time_results[i]}\n")
         sys.exit()
         
 

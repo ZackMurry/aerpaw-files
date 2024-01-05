@@ -30,7 +30,7 @@ out.release()
 """
 
 
-use_security = True
+use_security = False
 video_size = 'SM' # SM or LG
 key = b64decode('c8O9Xp7HcudRrY5KcnJdNZeQjAfdFrB4lVBkSjWI0hw=')
 
@@ -41,9 +41,20 @@ def get_config_str():
         return f"SEC_{video_size}"
     return f"NOSEC_{video_size}"
 
-max_repetitions = 1
+num_frames = 0
+frame_dir = ''
+frame_file_start = ''
 if video_size == 'LG':
-    max_repetitions = 10
+    num_frames = 450
+    frame_dir = '/root/flypaw/drone/flypawPilot/data/large'
+    frame_file_start = 'large'
+else:
+    if video_size != 'SM':
+        print('UNKNOWN VIDEO SIZE: Defaulting to SM')
+    num_frames = 180
+    frame_dir = '/root/flypaw/drone/flypawPilot/data/small'
+    frame_file_start = 'small'
+
 
 if use_security:
   with open('private_key_dsa.pem', "rb") as file1:
@@ -60,6 +71,16 @@ fps_results = []
 def get_fps_results():
     return fps_results
 
+bw_results = []
+
+def get_bandwidth_results():
+    return bw_results
+
+time_results = []
+
+def get_time_results():
+    return time_results
+
 should_stop = Event()
 def sigint_handler(signum, frame):
   should_stop.set()
@@ -68,10 +89,8 @@ signal.signal(signal.SIGINT, sigint_handler)
 
 
 def send_image(conn, idx):
-    
-  
-    
-  image = cv2.imread(f"data/sample-{idx}.jpg")
+  print(f"Sending frame {idx}")
+  image = cv2.imread(f"{frame_dir}/{frame_file_start}-{idx:04d}.jpg")
   b = bytearray(cv2.imencode('.jpg', image)[1])
 
   #print("len(b):", len(b))
@@ -162,26 +181,22 @@ def send_image(conn, idx):
 
 def handle_client(conn):
   idx = 1
-  repetitions = 0
   t0 = time.time()
   while not should_stop.is_set():
     msg = conn.recv_msg()
     if msg is None:
       continue
-    if idx > 514:
-      repetitions += 1
-      if repetitions >= max_repetitions:
-          conn.mav.camera_capture_status_send(
-              (int) (1000 * (time.time() - t0)), # timestamp
-              0, # image capturing status = idle
-              0, # video capturing status = idle
-              0, # image capture interval
-              0, # elapsed time since recording started = unavailable
-              0, # available storage capacity
-              0 # num images captured
-          )
-          break
-      idx = 1
+    if idx > num_frames:
+      conn.mav.camera_capture_status_send(
+          (int) (1000 * (time.time() - t0)), # timestamp
+          0, # image capturing status = idle
+          0, # video capturing status = idle
+          0, # image capture interval
+          0, # elapsed time since recording started = unavailable
+          0, # available storage capacity
+          0 # num images captured
+      )
+      break
     # print(msg.get_type())
     if msg.get_type() == 'DATA_TRANSMISSION_HANDSHAKE':
       send_image(conn, idx)
@@ -197,9 +212,11 @@ def handle_client(conn):
     0 # num images captured
   )
   dt = time.time() - t0
-  fps = (idx * max_repetitions) / dt
-  print("%.2f FPS | Transferred %d frames in %.1f seconds" % (fps, idx * max_repetitions, dt))
+  fps = idx / dt
+  print("%.2f FPS | Transferred %d frames in %.1f seconds" % (fps, idx, dt))
   fps_results.append(fps)
+  bw_results.append(0.001*(conn.mav.total_bytes_sent)/dt)
+  time_results.append(dt)
   conn.port.close()
 
 def print_summary(conn, delta_t):
