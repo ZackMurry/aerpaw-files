@@ -1,0 +1,41 @@
+1. DONT perform this command from the AERPAW preparing substrate document.
+sudo nmcli c add type gsm ifname '*' con-name wwan0 apn Broadband --- DONT
+
+2.
+
+
+
+
+
+
+
+
+sudo apt install picocom
+sudo apt install vim
+sudo apt install python-pip
+sudo apt install pcregrep
+pip install threaded
+pip install serial
+pip install pyserial
+pip install tabulate
+
+cat /sys/module/usbcore/parameters/autosuspend
+-1
+
+sudo vim /etc/default/grub
+GRUB_CMDLINE_LINUX_DEFAULT="quiet splash usbcore.autosuspend=-1 pci=noaer intel_iommu=off"
+ 1156  sudo vim /etc/default/grub
+ 1157  sudo update-grub
+ 1158  sudo reboot
+
+aerpawops@SPN-new:~/AERPAW-Dev/AHN/E-VM/Profile_software/other_radio/QuectelLogger/Radio$ sudo cat /boot/efi/config.txt
+dtparam=sd_poll_once
+
+sudo systemctl status ModemManager
+#sudo usr/sbin/ModemManager --filter-policy=DEFAULT
+#https://askubuntu.com/questions/399263/udev-rules-seem-ignored-can-not-prevent-modem-manager-from-grabbing-device
+
+sudo vim /lib/systemd/system/ModemManager.service
+ExecStart=/usr/sbin/ModemManager --filter-policy=DEFAULT
+sudo systemctl daemon-reload
+sudo systemctl restart ModemManager

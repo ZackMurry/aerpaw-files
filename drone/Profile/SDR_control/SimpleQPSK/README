@@ -1,0 +1,12 @@
+This folder contains the GNU Radio client for the clients.  This runs on each docker client and creates a tuntap interface for its input and output into the container (Note: you must configure the ip addr of the tap, see scripts in Glue).
+
+This requires GNU Radio 3.8 (thankfully this is now the version in apt install!)
+
+The python file is created by clicking generate in the GNU Radio graph (.grc) and is set to run without a GUI. This allows for the node to be run in a docker container without a graphics server (see usage in Glue).  
+
+The flow graph contains notes to help modify the client. The node accepts the -n parameter to specify the node id and this can be used to calculate ip addrs and other values (python syntax, look at the udp ip addrs for an example). In a worst case scenario where you are working with the graph without a graphics server, the python output can be edited directly for simple changes like changing an ip address.
+
+
+NOTE: Before genertaing the python file, make sure the "Generate Options" in the "Options" block (top left of the grpah) is set back to "No GUI" after you have made the necessary changes in the GNU Radio Graph. Otherwise, you will get an error when running the script inside a container, which doesn't have GUI support.
+
+NOTE: If the generated python file throws an error when run. Do the following and try again. Within the generated python file (rcv_udp_tst.py), in the class constructor (line number 26), remove the following expression "catch_exceptions=True".

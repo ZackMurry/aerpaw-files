@@ -1,0 +1,17 @@
+ AERPAW Wiki Overview
+This is the Developer's wiki for the AERPAW project team, a structured and easily accessible repository to keep all current, projected, defunct or obsolete developer's notes for all AERPAW project components.  It is open to the public to view, but only members of the project team have the ability to edit content, comment, or attach files.  It is maintained by AERPAW project PIs.  If you do not have edit access to some particular page, and you feel you should, please get in touch with them.
+
+This wiki has little or no general information about the AERPAW project - for that, please go to http://aerpaw.org.
+
+Navigation
+You should be able to use the navigation bar at the left of the page to find the appropriate page; alternatively you can use the "Sitemap" link at the bottom of that navigation bar to locate the page you want.  The navigation bar may initially be hidden if you are viewing this page on a mobile device with a small screen.  You should be able to click on the door icon (above this text and just below the page heading) to expose the navigation bar.
+
+The navigation bar only lists sub-pages upto the second level below "Wiki Start".  Lower level pages are not visible or accessible directly from the navigation bar, but are accessible (a) linked from its parent page, in the list of children at the bottom, and also (b) from the "Sitemap".
+
+Organization
+This wiki is organized according to the Work Breakdown Structure (WBS) for the project.  Please keep it so organized.  If in doubt as to how to use the wiki, consult AERPAW PIs.
+
+The wiki proper starts with the "Wiki Start" page.  Before that, there are some pages for overarching project use, that may pertain to more than one of the pages, or is in some way orthogonal to the WBS organization.  Some of these are internal to the team, and will not be visible to other visitors.
+
+Editing
+Before editing this wiki, please make sure you read the instructions on the "Wiki Start" page; and if in doubt, consult AERPAW PIs before making any edits.

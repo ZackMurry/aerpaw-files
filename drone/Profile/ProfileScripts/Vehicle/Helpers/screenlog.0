@@ -1,0 +1,1225 @@
+gps: GPSInfo:fix=6,num_sat=10    fix type: 6
+gps: GPSInfo:fix=6,num_sat=10
+{"time": "2024-01-05T00:09:00.154877-05:00", "state": "preflight"}
+lat: 35.7273299
+lon: -78.69617
+alt: -0.014
+Checking position
+lat: 35.7273299
+lon: -78.69617
+alt: -0.014
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:09:00.156397-05:00', 'uuid_received': 'c94f23fa-3f2c-4ded-a87c-a0aa2b900e71', 'type_received': 'mission', 'drone_position': (Lat:35.7273299 Lon:-78.69617 Altitude:-0.014), 'missions': [<flypawClasses.missionInfo object at 0x7f6aea988490>]}
+c94f23fa-3f2c-4ded-a87c-a0aa2b900e71
+mission receipt confirmed by UUID
+missionObjective Transfer Check: [<flypawClasses.MissionObjective object at 0x7f68b7332830>, <flypawClasses.MissionObjective object at 0x7f68b73304c0>, <flypawClasses.MissionObjective object at 0x7f68b7333340>, <flypawClasses.MissionObjective object at 0x7f68b73333d0>, <flypawClasses.MissionObjective object at 0x7f68b7333460>]
+missionObjectives: ['IPERF', 'SEND_VIDEO', 'SEND_VIDEO', 'SEND_VIDEO', 'IPERF']
+number of missions: 5
+
+============
+====TOP↓ ===
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|    FLIGHT|
+===BOTTOM===
+============
+Count: 8
+Next Task: FLIGHT: Position-- Lat:35.72733029221068 Lon:-78.69617521897719 Alt:50
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+accepting mission
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:09:00.157649-05:00', 'uuid_received': 'ce2b40b6-af7f-416a-8c42-fce9cbf63b77', 'type_received': 'acceptMission', 'drone_position': (Lat:35.7273299 Lon:-78.69617 Altitude:-0.014), 'missionstatus': 'confirmed'}
+ce2b40b6-af7f-416a-8c42-fce9cbf63b77
+acceptMission receipt confirmed by UUID
+Here it isIPERF mission accepted
+check resources
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:09:00.158186-05:00', 'uuid_received': '46c7d6c1-030b-48bb-8b19-8b89a73f9b93', 'type_received': 'resourceInfo', 'drone_position': (Lat:35.7273299 Lon:-78.69617 Altitude:-0.014), 'resources': []}
+46c7d6c1-030b-48bb-8b19-8b89a73f9b93
+resourceInfo receipt confirmed by UUID
+drone not armed!!!
+takeoff
+takeoff to 50m
+[aerpawlib] Guided command attempted. Waiting for safety pilot to arm
+WARNING:autopilot:Warning: Arming Checks Disabled
+
+reached 50m
+{"time": "2024-01-05T00:09:23.183159-05:00", "state": "waypoint_entry"}
+lat: 35.72733
+lon: -78.6961701
+alt: 3.757
+...GPS Verified
+...Battery is communicating
+Reporting telemetry and battery status...
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:09:23.235342-05:00', 'uuid_received': '78d3ceef-ae02-4eaf-a4c7-2fbbc2f2971d', 'type_received': 'telemetry', 'drone_position': (Lat:35.72733 Lon:-78.6961701 Altitude:3.757)}
+78d3ceef-ae02-4eaf-a4c7-2fbbc2f2971d
+telemetry receipt confirmed by UUID
+...Report position to basestation confirmed
+<flypawClasses.Task object at 0x7f6aea9881c0>
+
+============
+====TOP↓ ===
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|    FLIGHT|
+===BOTTOM===
+============
+Count: 8
+Next Task: FLIGHT: Position-- Lat:35.72733029221068 Lon:-78.69617521897719 Alt:50
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+The distance to radio is 15.198 m.
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:09:26.438713-05:00', 'uuid_received': 'e0dc6a28-6d53-4c91-90e5-9587f5147645', 'type_received': 'iperfResults', 'drone_position': (Lat:35.72733 Lon:-78.6961701 Altitude:4.403)}
+e0dc6a28-6d53-4c91-90e5-9587f5147645
+iperfResults receipt confirmed by UUID
+IPERF_CALL_RESULTS:
+MBPS: 21438.223191052013
+CONNECTION: ok
+---------------
+RadioMapLength:1
+CONNECTION-GOOD!
+TaskHold Empty:False
+Captives:0
+{"time": "2024-01-05T00:09:26.449975-05:00", "state": "action"}
+{"time": "2024-01-05T00:09:26.460224-05:00", "state": "flight"}
+Trying to fly...
+35.72733029221068, -78.69617521897719
+Deltas: 2.9221067876505913e-07, 5.118977185247786e-06
+Already there!!!
+ACTION COMPLETE!
+TTE: 1704431340.1580396
+{"time": "2024-01-05T00:09:26.471276-05:00", "state": "waypoint_entry"}
+lat: 35.7273298
+lon: -78.6961699
+alt: 12.539
+...GPS Verified
+...Battery is communicating
+Reporting telemetry and battery status...
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:09:26.471778-05:00', 'uuid_received': '856989c1-c35c-4344-b75e-b87524dee79f', 'type_received': 'telemetry', 'drone_position': (Lat:35.7273298 Lon:-78.6961699 Altitude:12.539)}
+856989c1-c35c-4344-b75e-b87524dee79f
+telemetry receipt confirmed by UUID
+...Report position to basestation confirmed
+<flypawClasses.Task object at 0x7f6aea92fb50>
+
+============
+====TOP↓ ===
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+===BOTTOM===
+============
+Count: 7
+Next Task: FLIGHT: Position-- Lat:35.726595222161095 Lon:-78.69623736409352 Alt:50
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+The distance to radio is 15.205 m.
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:09:29.682339-05:00', 'uuid_received': 'a9810dba-8d24-446d-8500-6589970f8ebe', 'type_received': 'iperfResults', 'drone_position': (Lat:35.7273298 Lon:-78.6961699 Altitude:12.539)}
+a9810dba-8d24-446d-8500-6589970f8ebe
+iperfResults receipt confirmed by UUID
+IPERF_CALL_RESULTS:
+MBPS: 21483.739604515802
+CONNECTION: ok
+---------------
+RadioMapLength:2
+CONNECTION-GOOD!
+TaskHold Empty:False
+Captives:0
+{"time": "2024-01-05T00:09:29.693486-05:00", "state": "action"}
+{"time": "2024-01-05T00:09:29.703732-05:00", "state": "flight"}
+Trying to fly...
+35.726595222161095, -78.69623736409352
+Deltas: 0.0007345778389051816, 6.746409351876537e-05
+Ya...
+ACTION COMPLETE!
+TTE: 1704431340.1580396
+{"time": "2024-01-05T00:09:55.973141-05:00", "state": "waypoint_entry"}
+lat: 35.7266106
+lon: -78.696236
+alt: 49.992
+...GPS Verified
+...Battery is communicating
+Reporting telemetry and battery status...
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:09:56.021523-05:00', 'uuid_received': '69a7af34-f480-44a9-a54f-545676912f30', 'type_received': 'telemetry', 'drone_position': (Lat:35.7266106 Lon:-78.696236 Altitude:49.992)}
+69a7af34-f480-44a9-a54f-545676912f30
+telemetry receipt confirmed by UUID
+...Report position to basestation confirmed
+<flypawClasses.Task object at 0x7f68b73334f0>
+
+============
+====TOP↓ ===
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|SEND_VIDEO|
+===BOTTOM===
+============
+Count: 6
+Next Task: SEND_VIDEO: Position-- Lat:35.726595222161095 Lon:-78.69623736409352 Alt:50
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+The distance to radio is 93.243 m.
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:09:59.226146-05:00', 'uuid_received': 'bf640f1a-e8ff-4e7a-9dc1-05528c319783', 'type_received': 'iperfResults', 'drone_position': (Lat:35.7266106 Lon:-78.696236 Altitude:49.992)}
+bf640f1a-e8ff-4e7a-9dc1-05528c319783
+iperfResults receipt confirmed by UUID
+IPERF_CALL_RESULTS:
+MBPS: 21345.44267107393
+CONNECTION: ok
+---------------
+RadioMapLength:3
+CONNECTION-GOOD!
+TaskHold Empty:False
+Captives:0
+{"time": "2024-01-05T00:09:59.237349-05:00", "state": "action"}
+------------------ SENDING VIDEO ------------------
+35.7266106, -78.696236
+Sending frame 1
+Sending frame 2
+Sending frame 3
+Sending frame 4
+Sending frame 5
+Sending frame 6
+Sending frame 7
+Sending frame 8
+Sending frame 9
+Sending frame 10
+Sending frame 11
+Sending frame 12
+Sending frame 13
+Sending frame 14
+Sending frame 15
+Sending frame 16
+Sending frame 17
+Sending frame 18
+Sending frame 19
+Sending frame 20
+Sending frame 21
+Sending frame 22
+Sending frame 23
+Sending frame 24
+Sending frame 25
+Sending frame 26
+Sending frame 27
+Sending frame 28
+Sending frame 29
+Sending frame 30
+Sending frame 31
+Sending frame 32
+Sending frame 33
+Sending frame 34
+Sending frame 35
+Sending frame 36
+Sending frame 37
+Sending frame 38
+Sending frame 39
+Sending frame 40
+Sending frame 41
+Sending frame 42
+Sending frame 43
+Sending frame 44
+Sending frame 45
+Sending frame 46
+Sending frame 47
+Sending frame 48
+Sending frame 49
+Sending frame 50
+Sending frame 51
+Sending frame 52
+Sending frame 53
+Sending frame 54
+Sending frame 55
+Sending frame 56
+Sending frame 57
+Sending frame 58
+Sending frame 59
+Sending frame 60
+Sending frame 61
+Sending frame 62
+Sending frame 63
+Sending frame 64
+Sending frame 65
+Sending frame 66
+Sending frame 67
+Sending frame 68
+Sending frame 69
+Sending frame 70
+Sending frame 71
+Sending frame 72
+Sending frame 73
+Sending frame 74
+Sending frame 75
+Sending frame 76
+Sending frame 77
+Sending frame 78
+Sending frame 79
+Sending frame 80
+Sending frame 81
+Sending frame 82
+Sending frame 83
+Sending frame 84
+Sending frame 85
+Sending frame 86
+Sending frame 87
+Sending frame 88
+Sending frame 89
+Sending frame 90
+Sending frame 91
+Sending frame 92
+Sending frame 93
+Sending frame 94
+Sending frame 95
+Sending frame 96
+Sending frame 97
+Sending frame 98
+Sending frame 99
+Sending frame 100
+Sending frame 101
+Sending frame 102
+Sending frame 103
+Sending frame 104
+Sending frame 105
+Sending frame 106
+Sending frame 107
+Sending frame 108
+Sending frame 109
+Sending frame 110
+Sending frame 111
+Sending frame 112
+Sending frame 113
+Sending frame 114
+Sending frame 115
+Sending frame 116
+Sending frame 117
+Sending frame 118
+Sending frame 119
+Sending frame 120
+Sending frame 121
+Sending frame 122
+Sending frame 123
+Sending frame 124
+Sending frame 125
+Sending frame 126
+Sending frame 127
+Sending frame 128
+Sending frame 129
+Sending frame 130
+Sending frame 131
+Sending frame 132
+Sending frame 133
+Sending frame 134
+Sending frame 135
+Sending frame 136
+Sending frame 137
+Sending frame 138
+Sending frame 139
+Sending frame 140
+Sending frame 141
+Sending frame 142
+Sending frame 143
+Sending frame 144
+Sending frame 145
+Sending frame 146
+Sending frame 147
+Sending frame 148
+Sending frame 149
+Sending frame 150
+Sending frame 151
+Sending frame 152
+Sending frame 153
+Sending frame 154
+Sending frame 155
+Sending frame 156
+Sending frame 157
+Sending frame 158
+Sending frame 159
+Sending frame 160
+Sending frame 161
+Sending frame 162
+Sending frame 163
+Sending frame 164
+Sending frame 165
+Sending frame 166
+Sending frame 167
+Sending frame 168
+Sending frame 169
+Sending frame 170
+Sending frame 171
+Sending frame 172
+Sending frame 173
+Sending frame 174
+Sending frame 175
+Sending frame 176
+Sending frame 177
+Sending frame 178
+Sending frame 179
+Sending frame 180
+41.27 FPS | Transferred 181 frames in 4.4 seconds
+Overall: 21096 sent, 1069 received, 0 errors bwin=4.1 kB/s bwout=1207.9 kB/s
+------------------ END VIDEO SEND ------------------
+ACTION COMPLETE!
+TTE: 1704431340.1580396
+{"time": "2024-01-05T00:10:03.655305-05:00", "state": "waypoint_entry"}
+lat: 35.7265978
+lon: -78.6962365
+alt: 50.0
+...GPS Verified
+...Battery is communicating
+Reporting telemetry and battery status...
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:10:03.656135-05:00', 'uuid_received': 'e3307f03-bc57-4254-8b1f-0d062ec9c9ce', 'type_received': 'telemetry', 'drone_position': (Lat:35.7265978 Lon:-78.6962365 Altitude:50.0)}
+e3307f03-bc57-4254-8b1f-0d062ec9c9ce
+telemetry receipt confirmed by UUID
+...Report position to basestation confirmed
+<flypawClasses.Task object at 0x7f68b7333520>
+
+============
+====TOP↓ ===
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+===BOTTOM===
+============
+Count: 5
+Next Task: FLIGHT: Position-- Lat:35.72571194564303 Lon:-78.696408752346 Alt:50
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+The distance to radio is 94.652 m.
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:10:06.898057-05:00', 'uuid_received': 'e23046bc-2753-425f-8c06-f5acf21ed05a', 'type_received': 'iperfResults', 'drone_position': (Lat:35.7265978 Lon:-78.6962365 Altitude:50.0)}
+e23046bc-2753-425f-8c06-f5acf21ed05a
+iperfResults receipt confirmed by UUID
+IPERF_CALL_RESULTS:
+MBPS: 23488.943402728826
+CONNECTION: ok
+---------------
+RadioMapLength:4
+CONNECTION-GOOD!
+TaskHold Empty:False
+Captives:0
+{"time": "2024-01-05T00:10:06.909088-05:00", "state": "action"}
+{"time": "2024-01-05T00:10:06.919316-05:00", "state": "flight"}
+Trying to fly...
+35.72571194564303, -78.696408752346
+Deltas: 0.0008858543569729704, 0.0001722523460045977
+Ya...
+ACTION COMPLETE!
+TTE: 1704431340.1580396
+{"time": "2024-01-05T00:10:20.976909-05:00", "state": "waypoint_entry"}
+lat: 35.725727
+lon: -78.6964066
+alt: 49.992
+...GPS Verified
+...Battery is communicating
+Reporting telemetry and battery status...
+Messaging 192.168.106.2:20001
+timeout
+no reply from server while transmitting position
+<flypawClasses.Task object at 0x7f68b7333550>
+
+============
+====TOP↓ ===
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|SEND_VIDEO|
+===BOTTOM===
+============
+Count: 4
+Next Task: SEND_VIDEO: Position-- Lat:35.72571194564303 Lon:-78.696408752346 Alt:50
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+The distance to radio is 194.589 m.
+Messaging 192.168.106.2:20001
+timeout
+no reply from server while transmitting iperfResults
+IPERF_CALL_RESULTS:
+MBPS: 21673.278457549375
+CONNECTION: ok
+---------------
+CONNECTION-BAD!
+Action List Keys: 4
+KEYS: 
+[1, 2, 3, 4]
+{1: <flypawClasses.Task object at 0x7f6aea9881c0>, 2: <flypawClasses.Task object at 0x7f6aea92fb50>, 3: <flypawClasses.Task object at 0x7f68b73334f0>, 4: <flypawClasses.Task object at 0x7f68b7333520>}
+Confidence:100.0
+Action List Keys: 4
+KEYS: 
+[1, 2, 3, 4]
+{1: <flypawClasses.Task object at 0x7f6aea9881c0>, 2: <flypawClasses.Task object at 0x7f6aea92fb50>, 3: <flypawClasses.Task object at 0x7f68b73334f0>, 4: <flypawClasses.Task object at 0x7f68b7333520>}
+Confidence:100.0
+Action List Keys: 4
+KEYS: 
+[1, 2, 3, 4]
+{1: <flypawClasses.Task object at 0x7f6aea9881c0>, 2: <flypawClasses.Task object at 0x7f6aea92fb50>, 3: <flypawClasses.Task object at 0x7f68b73334f0>, 4: <flypawClasses.Task object at 0x7f68b7333520>}
+2 solutions!
+[['BLOCK'], []]
+SOL: 0
+Based on PENALTY option #0 is the optimal solution
+['BLOCK']
+['BLOCK']
+Recommended Solution: BLOCK
+Defaulting to BACKSTEP
+BackSteps: 
+ID: 2 Position: (Lat:35.7266106 Lon:-78.696236 Altitude:49.992) Connected: True
+ID: 3 Position: (Lat:35.7257083 Lon:-78.6964102 Altitude:49.995) Connected: False
+TASK ID: 3
+Appending Next Task!
+TASK ID: 2
+
+============
+====TOP↓ ===
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|D++++FLIGHT|
+|SEND_VIDEO|
+|D++++FLIGHT|
+===BOTTOM===
+============
+Count: 6
+Next Task: FLIGHT: Position-- Lat:35.7266106 Lon:-78.696236 Alt:49.992
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+{"time": "2024-01-05T00:10:27.226537-05:00", "state": "action"}
+{"time": "2024-01-05T00:10:27.236833-05:00", "state": "flight"}
+Trying to fly...
+35.7266106, -78.696236
+Deltas: 0.0009022999999999115, 0.00017420000000356595
+Ya...
+ACTION COMPLETE!
+TTE: 1704431340.1580396
+{"time": "2024-01-05T00:10:44.726454-05:00", "state": "waypoint_entry"}
+lat: 35.7265986
+lon: -78.6962388
+alt: 49.983
+...GPS Verified
+...Battery is communicating
+Reporting telemetry and battery status...
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:10:44.727462-05:00', 'uuid_received': '72f8657c-8ccb-4d0d-a2c3-b05a9926c182', 'type_received': 'telemetry', 'drone_position': (Lat:35.7265986 Lon:-78.6962388 Altitude:49.983)}
+72f8657c-8ccb-4d0d-a2c3-b05a9926c182
+telemetry receipt confirmed by UUID
+...Report position to basestation confirmed
+<flypawClasses.Task object at 0x7f68b7333550>
+
+============
+====TOP↓ ===
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|D++++FLIGHT|
+|SEND_VIDEO|
+===BOTTOM===
+============
+Count: 5
+Next Task: SEND_VIDEO: Position-- Lat:35.72571194564303 Lon:-78.696408752346 Alt:50
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+The distance to radio is 94.598 m.
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:10:47.926450-05:00', 'uuid_received': '7ca96557-2c6f-480a-955b-1abb5eec38b6', 'type_received': 'iperfResults', 'drone_position': (Lat:35.7265986 Lon:-78.6962388 Altitude:49.983)}
+7ca96557-2c6f-480a-955b-1abb5eec38b6
+iperfResults receipt confirmed by UUID
+IPERF_CALL_RESULTS:
+MBPS: 21821.47410492678
+CONNECTION: ok
+---------------
+RadioMapLength:6
+CONNECTION-GOOD!
+TaskHold Empty:False
+Captives:0
+{"time": "2024-01-05T00:10:47.937662-05:00", "state": "action"}
+------------------ SENDING VIDEO ------------------
+35.7265986, -78.6962388
+Sending frame 1
+Sending frame 2
+Sending frame 3
+Sending frame 4
+Sending frame 5
+Sending frame 6
+Sending frame 7
+Sending frame 8
+Sending frame 9
+Sending frame 10
+Sending frame 11
+Sending frame 12
+Sending frame 13
+Sending frame 14
+Sending frame 15
+Sending frame 16
+Sending frame 17
+Sending frame 18
+Sending frame 19
+Sending frame 20
+Sending frame 21
+Sending frame 22
+Sending frame 23
+Sending frame 24
+Sending frame 25
+Sending frame 26
+Sending frame 27
+Sending frame 28
+Sending frame 29
+Sending frame 30
+Sending frame 31
+Sending frame 32
+Sending frame 33
+Sending frame 34
+Sending frame 35
+Sending frame 36
+Sending frame 37
+Sending frame 38
+Sending frame 39
+Sending frame 40
+Sending frame 41
+Sending frame 42
+Sending frame 43
+Sending frame 44
+Sending frame 45
+Sending frame 46
+Sending frame 47
+Sending frame 48
+Sending frame 49
+Sending frame 50
+Sending frame 51
+Sending frame 52
+Sending frame 53
+Sending frame 54
+Sending frame 55
+Sending frame 56
+Sending frame 57
+Sending frame 58
+Sending frame 59
+Sending frame 60
+Sending frame 61
+Sending frame 62
+Sending frame 63
+Sending frame 64
+Sending frame 65
+Sending frame 66
+Sending frame 67
+Sending frame 68
+Sending frame 69
+Sending frame 70
+Sending frame 71
+Sending frame 72
+Sending frame 73
+Sending frame 74
+Sending frame 75
+Sending frame 76
+Sending frame 77
+Sending frame 78
+Sending frame 79
+Sending frame 80
+Sending frame 81
+Sending frame 82
+Sending frame 83
+Sending frame 84
+Sending frame 85
+Sending frame 86
+Sending frame 87
+Sending frame 88
+Sending frame 89
+Sending frame 90
+Sending frame 91
+Sending frame 92
+Sending frame 93
+Sending frame 94
+Sending frame 95
+Sending frame 96
+Sending frame 97
+Sending frame 98
+Sending frame 99
+Sending frame 100
+Sending frame 101
+Sending frame 102
+Sending frame 103
+Sending frame 104
+Sending frame 105
+Sending frame 106
+Sending frame 107
+Sending frame 108
+Sending frame 109
+Sending frame 110
+Sending frame 111
+Sending frame 112
+Sending frame 113
+Sending frame 114
+Sending frame 115
+Sending frame 116
+Sending frame 117
+Sending frame 118
+Sending frame 119
+Sending frame 120
+Sending frame 121
+Sending frame 122
+Sending frame 123
+Sending frame 124
+Sending frame 125
+Sending frame 126
+Sending frame 127
+Sending frame 128
+Sending frame 129
+Sending frame 130
+Sending frame 131
+Sending frame 132
+Sending frame 133
+Sending frame 134
+Sending frame 135
+Sending frame 136
+Sending frame 137
+Sending frame 138
+Sending frame 139
+Sending frame 140
+Sending frame 141
+Sending frame 142
+Sending frame 143
+Sending frame 144
+Sending frame 145
+Sending frame 146
+Sending frame 147
+Sending frame 148
+Sending frame 149
+Sending frame 150
+Sending frame 151
+Sending frame 152
+Sending frame 153
+Sending frame 154
+Sending frame 155
+Sending frame 156
+Sending frame 157
+Sending frame 158
+Sending frame 159
+Sending frame 160
+Sending frame 161
+Sending frame 162
+Sending frame 163
+Sending frame 164
+Sending frame 165
+Sending frame 166
+Sending frame 167
+Sending frame 168
+Sending frame 169
+Sending frame 170
+Sending frame 171
+Sending frame 172
+Sending frame 173
+Sending frame 174
+Sending frame 175
+Sending frame 176
+Sending frame 177
+Sending frame 178
+Sending frame 179
+Sending frame 180
+41.71 FPS | Transferred 181 frames in 4.3 seconds
+Overall: 21096 sent, 1069 received, 0 errors bwin=4.1 kB/s bwout=1220.7 kB/s
+------------------ END VIDEO SEND ------------------
+ACTION COMPLETE!
+TTE: 1704431340.1580396
+{"time": "2024-01-05T00:10:52.298799-05:00", "state": "waypoint_entry"}
+lat: 35.7266119
+lon: -78.696237
+alt: 49.989
+...GPS Verified
+...Battery is communicating
+Reporting telemetry and battery status...
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:10:52.299722-05:00', 'uuid_received': 'f3d55456-bee9-47d5-86bb-2c3c682e5194', 'type_received': 'telemetry', 'drone_position': (Lat:35.7266119 Lon:-78.696237 Altitude:49.989)}
+f3d55456-bee9-47d5-86bb-2c3c682e5194
+telemetry receipt confirmed by UUID
+...Report position to basestation confirmed
+<flypawClasses.Task object at 0x7f68b8760610>
+
+============
+====TOP↓ ===
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+|D++++FLIGHT|
+===BOTTOM===
+============
+Count: 4
+Next Task: FLIGHT: Position-- Lat:35.7257083 Lon:-78.6964102 Alt:49.995
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+The distance to radio is 93.115 m.
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:10:55.506266-05:00', 'uuid_received': 'e146ceaa-aa85-4d06-868d-b52759bc27dd', 'type_received': 'iperfResults', 'drone_position': (Lat:35.7266119 Lon:-78.696237 Altitude:49.989)}
+e146ceaa-aa85-4d06-868d-b52759bc27dd
+iperfResults receipt confirmed by UUID
+IPERF_CALL_RESULTS:
+MBPS: 21600.751016882044
+CONNECTION: ok
+---------------
+RadioMapLength:7
+CONNECTION-GOOD!
+TaskHold Empty:False
+Captives:0
+{"time": "2024-01-05T00:10:55.517415-05:00", "state": "action"}
+{"time": "2024-01-05T00:10:55.527640-05:00", "state": "flight"}
+Trying to fly...
+35.7257083, -78.6964102
+Deltas: 0.0009036000000008926, 0.0001732000000060907
+Ya...
+ACTION COMPLETE!
+TTE: 1704431340.1580396
+{"time": "2024-01-05T00:11:12.985332-05:00", "state": "waypoint_entry"}
+lat: 35.7257228
+lon: -78.696407
+alt: 49.979
+...GPS Verified
+...Battery is communicating
+Reporting telemetry and battery status...
+Messaging 192.168.106.2:20001
+timeout
+no reply from server while transmitting position
+<flypawClasses.Task object at 0x7f68b7333580>
+
+============
+====TOP↓ ===
+|    FLIGHT|
+|SEND_VIDEO|
+|    FLIGHT|
+===BOTTOM===
+============
+Count: 3
+Next Task: FLIGHT: Position-- Lat:35.726595222161095 Lon:-78.69623736409352 Alt:50
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+The distance to radio is 194.986 m.
+Messaging 192.168.106.2:20001
+timeout
+no reply from server while transmitting iperfResults
+IPERF_CALL_RESULTS:
+MBPS: 21380.510504305304
+CONNECTION: ok
+---------------
+CONNECTION-BAD!
+TaskHold Empty:False
+Captives:0
+{"time": "2024-01-05T00:11:19.245231-05:00", "state": "action"}
+{"time": "2024-01-05T00:11:19.255593-05:00", "state": "flight"}
+Trying to fly...
+35.726595222161095, -78.69623736409352
+Deltas: 0.000890522161093088, 0.00017303590648509726
+Ya...
+ACTION COMPLETE!
+TTE: 1704431340.1580396
+{"time": "2024-01-05T00:11:36.483592-05:00", "state": "waypoint_entry"}
+lat: 35.7265815
+lon: -78.6962397
+alt: 49.992
+...GPS Verified
+...Battery is communicating
+Reporting telemetry and battery status...
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:11:36.484576-05:00', 'uuid_received': 'd97fab1c-46da-41c4-bfa7-f54f98c02cc2', 'type_received': 'telemetry', 'drone_position': (Lat:35.7265815 Lon:-78.6962397 Altitude:49.992)}
+d97fab1c-46da-41c4-bfa7-f54f98c02cc2
+telemetry receipt confirmed by UUID
+...Report position to basestation confirmed
+<flypawClasses.Task object at 0x7f68b73335b0>
+
+============
+====TOP↓ ===
+|    FLIGHT|
+|SEND_VIDEO|
+===BOTTOM===
+============
+Count: 2
+Next Task: SEND_VIDEO: Position-- Lat:35.726595222161095 Lon:-78.69623736409352 Alt:50
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+The distance to radio is 96.483 m.
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:11:39.714493-05:00', 'uuid_received': '74c5d4cf-f7f9-40d5-b6ac-45d647eb23f8', 'type_received': 'iperfResults', 'drone_position': (Lat:35.7265815 Lon:-78.6962397 Altitude:49.992)}
+74c5d4cf-f7f9-40d5-b6ac-45d647eb23f8
+iperfResults receipt confirmed by UUID
+IPERF_CALL_RESULTS:
+MBPS: 22733.766056732202
+CONNECTION: ok
+---------------
+RadioMapLength:9
+CONNECTION-GOOD!
+TaskHold Empty:False
+Captives:0
+{"time": "2024-01-05T00:11:39.726339-05:00", "state": "action"}
+------------------ SENDING VIDEO ------------------
+35.7265815, -78.6962397
+Sending frame 1
+Sending frame 2
+Sending frame 3
+Sending frame 4
+Sending frame 5
+Sending frame 6
+Sending frame 7
+Sending frame 8
+Sending frame 9
+Sending frame 10
+Sending frame 11
+Sending frame 12
+Sending frame 13
+Sending frame 14
+Sending frame 15
+Sending frame 16
+Sending frame 17
+Sending frame 18
+Sending frame 19
+Sending frame 20
+Sending frame 21
+Sending frame 22
+Sending frame 23
+Sending frame 24
+Sending frame 25
+Sending frame 26
+Sending frame 27
+Sending frame 28
+Sending frame 29
+Sending frame 30
+Sending frame 31
+Sending frame 32
+Sending frame 33
+Sending frame 34
+Sending frame 35
+Sending frame 36
+Sending frame 37
+Sending frame 38
+Sending frame 39
+Sending frame 40
+Sending frame 41
+Sending frame 42
+Sending frame 43
+Sending frame 44
+Sending frame 45
+Sending frame 46
+Sending frame 47
+Sending frame 48
+Sending frame 49
+Sending frame 50
+Sending frame 51
+Sending frame 52
+Sending frame 53
+Sending frame 54
+Sending frame 55
+Sending frame 56
+Sending frame 57
+Sending frame 58
+Sending frame 59
+Sending frame 60
+Sending frame 61
+Sending frame 62
+Sending frame 63
+Sending frame 64
+Sending frame 65
+Sending frame 66
+Sending frame 67
+Sending frame 68
+Sending frame 69
+Sending frame 70
+Sending frame 71
+Sending frame 72
+Sending frame 73
+Sending frame 74
+Sending frame 75
+Sending frame 76
+Sending frame 77
+Sending frame 78
+Sending frame 79
+Sending frame 80
+Sending frame 81
+Sending frame 82
+Sending frame 83
+Sending frame 84
+Sending frame 85
+Sending frame 86
+Sending frame 87
+Sending frame 88
+Sending frame 89
+Sending frame 90
+Sending frame 91
+Sending frame 92
+Sending frame 93
+Sending frame 94
+Sending frame 95
+Sending frame 96
+Sending frame 97
+Sending frame 98
+Sending frame 99
+Sending frame 100
+Sending frame 101
+Sending frame 102
+Sending frame 103
+Sending frame 104
+Sending frame 105
+Sending frame 106
+Sending frame 107
+Sending frame 108
+Sending frame 109
+Sending frame 110
+Sending frame 111
+Sending frame 112
+Sending frame 113
+Sending frame 114
+Sending frame 115
+Sending frame 116
+Sending frame 117
+Sending frame 118
+Sending frame 119
+Sending frame 120
+Sending frame 121
+Sending frame 122
+Sending frame 123
+Sending frame 124
+Sending frame 125
+Sending frame 126
+Sending frame 127
+Sending frame 128
+Sending frame 129
+Sending frame 130
+Sending frame 131
+Sending frame 132
+Sending frame 133
+Sending frame 134
+Sending frame 135
+Sending frame 136
+Sending frame 137
+Sending frame 138
+Sending frame 139
+Sending frame 140
+Sending frame 141
+Sending frame 142
+Sending frame 143
+Sending frame 144
+Sending frame 145
+Sending frame 146
+Sending frame 147
+Sending frame 148
+Sending frame 149
+Sending frame 150
+Sending frame 151
+Sending frame 152
+Sending frame 153
+Sending frame 154
+Sending frame 155
+Sending frame 156
+Sending frame 157
+Sending frame 158
+Sending frame 159
+Sending frame 160
+Sending frame 161
+Sending frame 162
+Sending frame 163
+Sending frame 164
+Sending frame 165
+Sending frame 166
+Sending frame 167
+Sending frame 168
+Sending frame 169
+Sending frame 170
+Sending frame 171
+Sending frame 172
+Sending frame 173
+Sending frame 174
+Sending frame 175
+Sending frame 176
+Sending frame 177
+Sending frame 178
+Sending frame 179
+Sending frame 180
+42.34 FPS | Transferred 181 frames in 4.3 seconds
+Overall: 21096 sent, 1069 received, 0 errors bwin=4.2 kB/s bwout=1239.2 kB/s
+------------------ END VIDEO SEND ------------------
+ACTION COMPLETE!
+TTE: 1704431340.1580396
+{"time": "2024-01-05T00:11:44.022302-05:00", "state": "waypoint_entry"}
+lat: 35.7265991
+lon: -78.6962371
+alt: 50.0
+...GPS Verified
+...Battery is communicating
+Reporting telemetry and battery status...
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:11:44.023123-05:00', 'uuid_received': '21251c1c-efcf-451a-87bb-8cacbcd5b125', 'type_received': 'telemetry', 'drone_position': (Lat:35.7265991 Lon:-78.6962371 Altitude:50.0)}
+21251c1c-efcf-451a-87bb-8cacbcd5b125
+telemetry receipt confirmed by UUID
+...Report position to basestation confirmed
+<flypawClasses.Task object at 0x7f68b73335e0>
+
+============
+====TOP↓ ===
+|    FLIGHT|
+===BOTTOM===
+============
+Count: 1
+Next Task: FLIGHT: Position-- Lat:35.726595222161095 Lon:-78.69623736409352 Alt:0
+
+Task Hold:
+============
+Count: 0
+============
+-----------------------------------------------
+The distance to radio is 94.518 m.
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:11:47.230498-05:00', 'uuid_received': '83dcac15-cce5-4c7a-8297-a2b17b9889df', 'type_received': 'iperfResults', 'drone_position': (Lat:35.7265991 Lon:-78.6962371 Altitude:50.0)}
+83dcac15-cce5-4c7a-8297-a2b17b9889df
+iperfResults receipt confirmed by UUID
+IPERF_CALL_RESULTS:
+MBPS: 21485.207978392962
+CONNECTION: ok
+---------------
+RadioMapLength:10
+CONNECTION-GOOD!
+TaskHold Empty:False
+Captives:0
+{"time": "2024-01-05T00:11:47.242107-05:00", "state": "action"}
+{"time": "2024-01-05T00:11:47.252442-05:00", "state": "flight"}
+Trying to fly...
+35.726595222161095, -78.69623736409352
+Deltas: 3.877838906873876e-06, 2.6409351505662926e-07
+Already there!!!
+ACTION COMPLETE!
+TTE: 1704431340.1580396
+{"time": "2024-01-05T00:11:47.262806-05:00", "state": "waypoint_entry"}
+lat: 35.7265988
+lon: -78.6962369
+alt: 50.0
+...GPS Verified
+...Battery is communicating
+Reporting telemetry and battery status...
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:11:47.263381-05:00', 'uuid_received': 'a0918576-53f7-4fea-b65f-cfca3fca642b', 'type_received': 'telemetry', 'drone_position': (Lat:35.7265988 Lon:-78.6962369 Altitude:50.0)}
+a0918576-53f7-4fea-b65f-cfca3fca642b
+telemetry receipt confirmed by UUID
+...Report position to basestation confirmed
+False
+Empty!
+The distance to radio is 94.548 m.
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:11:50.470139-05:00', 'uuid_received': 'b1f1ae62-0386-4c80-9b75-d3975bb4ba01', 'type_received': 'iperfResults', 'drone_position': (Lat:35.7265988 Lon:-78.6962369 Altitude:50.0)}
+b1f1ae62-0386-4c80-9b75-d3975bb4ba01
+iperfResults receipt confirmed by UUID
+IPERF_CALL_RESULTS:
+MBPS: 21466.185921622066
+CONNECTION: ok
+---------------
+RadioMapLength:11
+CONNECTION-GOOD!
+TaskHold Empty:False
+Captives:0
+No more tasks...Returning Home
+{"time": "2024-01-05T00:11:50.481392-05:00", "state": "abortMission"}
+Messaging 192.168.106.2:20001
+Reply from Server {'time_received': '2024-01-05T00:11:50.481721-05:00', 'uuid_received': 'bb09d1d1-5c9e-4e47-8b4c-2b6fb45ff68a', 'type_received': 'abortMission', 'drone_position': (Lat:35.7265988 Lon:-78.6962369 Altitude:50.0)}
+bb09d1d1-5c9e-4e47-8b4c-2b6fb45ff68a
+abortMission receipt confirmed by UUID
+land
+flight complete
+History:
+TrueCount: 8
+Working Count: 6
+ID: 7 Position: (Lat:35.7265988 Lon:-78.6962369 Altitude:50.0) Connected: True
+ID: 6 Position: (Lat:35.7265815 Lon:-78.6962397 Altitude:49.992) Connected: True
+ID: 5 Position: (Lat:35.7257047 Lon:-78.6964104 Altitude:49.983) Connected: False
+ID: 4 Position: (Lat:35.7265986 Lon:-78.6962388 Altitude:49.983) Connected: True
+ID: 3 Position: (Lat:35.7257083 Lon:-78.6964102 Altitude:49.995) Connected: False
+ID: 2 Position: (Lat:35.7266106 Lon:-78.696236 Altitude:49.992) Connected: True
+ID: 1 Position: (Lat:35.7273298 Lon:-78.6961699 Altitude:12.539) Connected: True
+ID: 0 Position: (Lat:35.72733 Lon:-78.6961701 Altitude:3.757) Connected: True
+Task ID: 1 Action: FLIGHT
+Task ID: 2 Action: FLIGHT
+Task ID: 3 Action: SEND_VIDEO
+Task ID: 4 Action: FLIGHT
+Task ID: 10 Action: FLIGHT
+Task ID: 5 Action: SEND_VIDEO
+Task ID: 9 Action: FLIGHT
+Task ID: 6 Action: FLIGHT
+Task ID: 7 Action: SEND_VIDEO
+Task ID: 8 Action: FLIGHT
+DumpReport:ERROR!
+DumpReport:ERROR!
+DumpReport:ERROR!
+DumpReport:ERROR!
+DumpReport:ERROR!
+DumpReport:ERROR!
+DumpReport:ERROR!
+DumpReport:ERROR!
+DumpReport:ERROR!
+DumpReport:ERROR!
+SpeculativeProduct List Length: 1
+Action List Keys: 10
+KEYS: 
+[1, 2, 3, 4, 10, 5, 9, 6, 7, 8]
+{1: <flypawClasses.Task object at 0x7f6aea9881c0>, 2: <flypawClasses.Task object at 0x7f6aea92fb50>, 3: <flypawClasses.Task object at 0x7f68b73334f0>, 4: <flypawClasses.Task object at 0x7f68b7333520>, 10: <flypawClasses.Task object at 0x7f68b7333c40>, 5: <flypawClasses.Task object at 0x7f68b7333550>, 9: <flypawClasses.Task object at 0x7f68b8760610>, 6: <flypawClasses.Task object at 0x7f68b7333580>, 7: <flypawClasses.Task object at 0x7f68b73335b0>, 8: <flypawClasses.Task object at 0x7f68b73335e0>}
+EXECUTE List Length: 10
+cleaning up
+{"time": "2024-01-05T00:13:08.413978-05:00", "state": "completed"}
+Messaging 192.168.106.2:20001
+timeout
+exiting

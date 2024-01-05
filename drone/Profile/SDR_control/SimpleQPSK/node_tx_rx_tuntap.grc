@@ -1,0 +1,494 @@
+options:
+  parameters:
+    author: kvasude2
+    catch_exceptions: 'True'
+    category: '[GRC Hier Blocks]'
+    cmake_opt: ''
+    comment: ''
+    copyright: ''
+    description: ''
+    gen_cmake: 'On'
+    gen_linking: dynamic
+    generate_options: no_gui
+    hier_block_src_path: '.:'
+    id: rcv_udp_tst
+    max_nouts: '0'
+    output_language: python
+    placement: (0,0)
+    qt_qss_theme: ''
+    realtime_scheduling: ''
+    run: 'True'
+    run_command: '{python} -u {filename}'
+    run_options: run
+    sizing_mode: fixed
+    thread_safe_setters: ''
+    title: Not titled yet
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [8, 12.0]
+    rotation: 0
+    state: enabled
+
+blocks:
+- name: RX_mode_sel
+  id: variable
+  parameters:
+    comment: ''
+    value: '[[0], [0], [1]]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [544, 12.0]
+    rotation: 0
+    state: true
+- name: TAP_bytes
+  id: variable
+  parameters:
+    comment: ''
+    value: '50'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [656, 12.0]
+    rotation: 0
+    state: true
+- name: TX_mode_sel
+  id: variable
+  parameters:
+    comment: ''
+    value: '[[0, 0, 1]]'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [440, 12.0]
+    rotation: 0
+    state: true
+- name: UDP_mtu
+  id: variable
+  parameters:
+    comment: ''
+    value: '10000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [404, 90]
+    rotation: 0
+    state: true
+- name: payload_mod
+  id: variable
+  parameters:
+    comment: ''
+    value: digital.constellation_qpsk()
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [272, 12.0]
+    rotation: 0
+    state: enabled
+- name: port_offset
+  id: variable
+  parameters:
+    comment: ''
+    value: node_id
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [744, 12.0]
+    rotation: 0
+    state: enabled
+- name: samp_rate
+  id: variable
+  parameters:
+    comment: ''
+    value: '1000'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [184, 12]
+    rotation: 0
+    state: enabled
+- name: tap_mtu
+  id: variable
+  parameters:
+    comment: ''
+    value: int(UDP_mtu/50)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [504, 91]
+    rotation: 0
+    state: true
+- name: blocks_message_debug_0
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1188, 414]
+    rotation: 0
+    state: disabled
+- name: blocks_message_debug_0_1
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [339, 388]
+    rotation: 0
+    state: disabled
+- name: blocks_message_debug_0_2
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1478, 224]
+    rotation: 0
+    state: disabled
+- name: blocks_message_debug_1
+  id: blocks_message_debug
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [3583, 372]
+    rotation: 0
+    state: disabled
+- name: blocks_pdu_to_tagged_stream_0
+  id: blocks_pdu_to_tagged_stream
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tag: packet_len
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [112, 649]
+    rotation: 0
+    state: enabled
+- name: blocks_pdu_to_tagged_stream_1
+  id: blocks_pdu_to_tagged_stream
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tag: rcv_packet_len
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [346, 302]
+    rotation: 0
+    state: enabled
+- name: blocks_repack_bits_bb_1
+  id: blocks_repack_bits_bb
+  parameters:
+    affinity: ''
+    alias: ''
+    align_output: 'False'
+    comment: ''
+    endianness: gr.GR_LSB_FIRST
+    k: '8'
+    l: payload_mod.bits_per_symbol()
+    len_tag_key: '"packet_len"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [371, 643]
+    rotation: 0
+    state: enabled
+- name: blocks_repack_bits_bb_2
+  id: blocks_repack_bits_bb
+  parameters:
+    affinity: ''
+    alias: ''
+    align_output: 'True'
+    comment: ''
+    endianness: gr.GR_LSB_FIRST
+    k: payload_mod.bits_per_symbol()
+    l: '8'
+    len_tag_key: '"rcv_packet_len"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [888, 294]
+    rotation: 0
+    state: enabled
+- name: blocks_socket_pdu_0
+  id: blocks_socket_pdu
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    host: '"172.18.0."+str(3-node_id)'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mtu: UDP_mtu
+    port: '""+str(20203-node_id)'
+    tcp_no_delay: 'False'
+    type: UDP_CLIENT
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1543, 559]
+    rotation: 0
+    state: true
+- name: blocks_socket_pdu_0_0
+  id: blocks_socket_pdu
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    host: 0.0.0.0
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mtu: UDP_mtu
+    port: '""+str(20200+node_id)'
+    tcp_no_delay: 'False'
+    type: UDP_SERVER
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [92, 251]
+    rotation: 0
+    state: enabled
+- name: blocks_socket_pdu_0_1
+  id: blocks_socket_pdu
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    host: '"172.18.0.100"'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mtu: UDP_mtu
+    port: '""+str(20100+node_id)'
+    tcp_no_delay: 'False'
+    type: UDP_CLIENT
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1548, 685]
+    rotation: 0
+    state: true
+- name: blocks_tagged_stream_to_pdu_0
+  id: blocks_tagged_stream_to_pdu
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tag: packet_len
+    type: complex
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1069, 663]
+    rotation: 0
+    state: true
+- name: blocks_tagged_stream_to_pdu_1
+  id: blocks_tagged_stream_to_pdu
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    tag: rcv_packet_len
+    type: byte
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1143, 304]
+    rotation: 0
+    state: enabled
+- name: blocks_tuntap_pdu_0
+  id: blocks_tuntap_pdu
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    ifn: tap000
+    istunflag: 'False'
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    mtu: tap_mtu
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [647, 450]
+    rotation: 0
+    state: enabled
+- name: digital_chunks_to_symbols_xx_0_0_0_0
+  id: digital_chunks_to_symbols_xx
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: BPSK Modulation
+    dimension: '1'
+    in_type: byte
+    maxoutbuf: '0'
+    minoutbuf: '0'
+    num_ports: '1'
+    out_type: complex
+    symbol_table: payload_mod.points()
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [730, 668]
+    rotation: 0
+    state: enabled
+- name: digital_constellation_decoder_cb_0
+  id: digital_constellation_decoder_cb
+  parameters:
+    affinity: ''
+    alias: ''
+    comment: ''
+    constellation: payload_mod.base()
+    maxoutbuf: '0'
+    minoutbuf: '0'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [602, 302]
+    rotation: 0
+    state: enabled
+- name: node_id
+  id: parameter
+  parameters:
+    alias: ''
+    comment: ''
+    hide: none
+    label: ''
+    short_id: n
+    type: intx
+    value: '1'
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [840, 12.0]
+    rotation: 0
+    state: enabled
+- name: note_0
+  id: note
+  parameters:
+    alias: ''
+    comment: ''
+    note: This changes if the containers talk directly or through the docker bridge
+      (UCHEM)
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1293, 562]
+    rotation: 0
+    state: true
+- name: note_1
+  id: note
+  parameters:
+    alias: ''
+    comment: ''
+    note: UDP_mtu controls tap_mtu to prevent UDP bad length from appearing, there
+      is an inflation factor of 50ish and this prevents packets from being broken
+      up inside GNURadio
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [401, 163]
+    rotation: 0
+    state: true
+- name: note_2
+  id: note
+  parameters:
+    alias: ''
+    comment: ''
+    note: node_id is a cmd line parameter (-n) which is used to identify which node
+      is being run (-n 1) is the default
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [834, 122]
+    rotation: 0
+    state: true
+- name: note_3
+  id: note
+  parameters:
+    alias: ''
+    comment: ''
+    note: These can also be changed to other ip addrs for other emulators
+  states:
+    bus_sink: false
+    bus_source: false
+    bus_structure: null
+    coordinate: [1262, 784]
+    rotation: 0
+    state: true
+
+connections:
+- [blocks_pdu_to_tagged_stream_0, '0', blocks_repack_bits_bb_1, '0']
+- [blocks_pdu_to_tagged_stream_1, '0', digital_constellation_decoder_cb_0, '0']
+- [blocks_repack_bits_bb_1, '0', digital_chunks_to_symbols_xx_0_0_0_0, '0']
+- [blocks_repack_bits_bb_2, '0', blocks_tagged_stream_to_pdu_1, '0']
+- [blocks_socket_pdu_0_0, pdus, blocks_pdu_to_tagged_stream_1, pdus]
+- [blocks_tagged_stream_to_pdu_0, pdus, blocks_socket_pdu_0, pdus]
+- [blocks_tagged_stream_to_pdu_1, pdus, blocks_message_debug_0_2, print_pdu]
+- [blocks_tagged_stream_to_pdu_1, pdus, blocks_tuntap_pdu_0, pdus]
+- [blocks_tuntap_pdu_0, pdus, blocks_message_debug_0, print_pdu]
+- [blocks_tuntap_pdu_0, pdus, blocks_pdu_to_tagged_stream_0, pdus]
+- [digital_chunks_to_symbols_xx_0_0_0_0, '0', blocks_tagged_stream_to_pdu_0, '0']
+- [digital_constellation_decoder_cb_0, '0', blocks_repack_bits_bb_2, '0']
+
+metadata:
+  file_format: 1
