@@ -8,13 +8,23 @@ import time
 import math, sys
 import cv2
 # sys.path.append('.')
-# from util.AESCipher import AESCipher
-#from Crypto.Cipher import AES
+#from util.AESCipher import AESCipher
+from Crypto.Cipher import AES
 from Crypto.Cipher import ChaCha20
-from Crypto.PublicKey import DSA
+from Crypto.PublicKey import DSA, RSA
 from Crypto.Hash import SHA256
 from Crypto.Signature import DSS
 from base64 import b64encode, b64decode
+import ecdsa
+from hashlib import sha256, sha512
+from Crypto.Signature.pkcs1_15 import PKCS115_SigScheme
+
+#keyPair = RSA.generate(bits=2048)
+#print(keyPair.export_key('PEM'))
+keyPair = RSA.import_key('-----BEGIN RSA PRIVATE KEY-----\nMIIEogIBAAKCAQEAs4Kw5qY3Qmry0cx5MJsqbW3JCdOga44rARYaP22EjfMKr9/i\n3MvSymmWtsIRhEOjrtLADJY1IuE/B4iWkUlwjxV/nrde8tEVDDNXjNfBfyQBeeZf\nTt5h7zC9UxEyKV7bQgYc2OKNClscxp7Pn+q8tw/Qw5vgYHklKdP7kle6/KqzqSYf\nLVWisH9hYm8/j5Hx6xMG+loK+rponrd3vMNRrskExwFcpgQkmC9t3gEmCGb4WN9w\nIVRFGCTy/Tx7WBvYVWEIl6p3eJEBdA2Z4xGY6ci9hJ8slo2XI/9cJPgJpMf/eD5F\nIxr+cjc2yzl5rNPFlp87RWCTfGkUjpg0Hf2eSwIDAQABAoIBAAC07v0sKLJn8sq7\nrFS+9g1etmMn82KCn/Qe+YYU399uzdbeKlz/uE9g1+pvKRvlLCXpGNjPkrkeVXM6\nxs9jB96WwD8/1HHW5pHyj4keQlnw5i8fQC4Uv5nlp9zn5boHgXsG5qrom070OtC9\nyFTCBc91PR3RHN1HkzpRGWIJjjCd4I1+ThW4+ovSrImG0/cBQyvKhF0jWEdBQ4HN\nkBrMI5Wj/qETsAGKfLcksjGQqro0o/ywix1lRM/TGYaO+SynYgSi72+44Xo8eQP0\n3aBHG4PSvvfb2G7ks3aoDcwFqsJsbRvb9W5E790Zw3tkx3S/LTv7Ailv4Najl3AZ\npWpfT70CgYEA04/B5EeyS3P2AVFaSrN00eTj+Xmu8+NPHUMh9/G/mzS0RUOIHi9q\nzzfp+h/fIGc4sQRdlvsKkF1Xg1XPV/+Aka2ig387zmqz9z40Hs+5Z6LNwG0h99Bx\n/r1xjLkEVm2W/+coSpaz2B7LP6DlUw3y1XJB0PgXHRrnlNb4vI3xJocCgYEA2Td2\nLQvN//Yb823QPnm8Da7bIY4NqFaK2TKjpVWi7tEC634h9FLbOHEotcpPGtJ0bcLm\nYO6c+HcHfdEQNb1Q5RPdiLWRJ0ScmZvbrkJFg8qKjpCdBzJySILP5ghg+9kenKq2\n+gZM5Fh80NANIcQ/xTnJDSE65xGLWAHy0paA9x0CgYBCWqVafu454h33Xdeu9Egg\niOTD21l3HwUyTVr7FDSfblFYJA0uQnsCkSvuik6GMDnEs3TTJNu0WcJX6/MDS5y8\nlDQTgDV20VquojDgtRAWpCZaQyBTRGpslmhl1aW5odepXYvykP/JOidPRpyGhypx\nrctcymMdetHFigMryG0pQwKBgAzxWhBLEMY8ouO5Wlwuor7p+VKhhTzPk0xn0Qpr\n9N5oA9WGWX2WZkuRqoxSdq4xdhCIOXPzI9VGOmMLzvx0wFo1+dBIiVKeqvoYKFnU\nxxGYQvNFuKWSIu8hJEQfoa+/+yv4nBh/wZsljqJekzm82NPmoo0uurTD/dqLmy1j\nHGIdAoGAPWG3uQ4k2Yr7usaNUtaLgblLe4LLPfgy9GutSYERzA0BajB7c6wdURJV\nOabbZXIWbjNVvUD5Tq6vxhCi3Wq0TVA+lSj1cxq0POD7fXwxzayfapAyujiamxDw\nmY16wTGqqSEgBGsmLUhn2q64cF7MGYgf4qr4J51Vg+RxGbX6a3w=\n-----END RSA PRIVATE KEY-----')
+
+
+
 
 
 """
@@ -30,16 +40,23 @@ out.release()
 """
 
 
-use_security = False
+use_encryption = False
+use_signature = True
 video_size = 'SM' # SM or LG
 key = b64decode('c8O9Xp7HcudRrY5KcnJdNZeQjAfdFrB4lVBkSjWI0hw=')
 
 private_key = None
 
+skb = b64decode('Z8vbM8tHLRhV5DueD+7T3BaLJUnEBUnyg4dZHB5nS5j02XcxbHwlHQeiuxT8b4X/')
+sk = ecdsa.SigningKey.from_string(skb, curve=ecdsa.NIST384p)
+
 def get_config_str():
-    if use_security:
-        return f"SEC_{video_size}"
-    return f"NOSEC_{video_size}"
+    conf = ""
+    if use_encryption:
+        conf = conf + "CHA_"
+    if use_signature:
+        conf = conf + "SIG_"
+    return f"{conf}_{video_size}"
 
 num_frames = 0
 frame_dir = ''
@@ -56,15 +73,28 @@ else:
     frame_file_start = 'small'
 
 
-if use_security:
+if use_signature:
   with open('private_key_dsa.pem', "rb") as file1:
       private_key = DSA.import_key(file1.read(), 'MyPassphrase')
   
-def create_signature(message):
+# 56 bytes
+def create_signature_dss(message):
   message_hash = SHA256.new(message)
   signer = DSS.new(private_key, 'fips-186-3')
-  signature1 = signer.sign(message_hash)
-  return signature1
+  signature = signer.sign(message_hash)
+  print(f"len(signature): {len(signature)}")
+  return signature
+
+# 96 bytes
+def create_signature_ecdsa(message):
+  return sk.sign(message)
+
+# 256 bytes
+def create_signature_rsa(message):
+    # Sign the message using the PKCS#1 v1.5 signature scheme (RSASP1)
+    hash = SHA256.new(message)
+    signer = PKCS115_SigScheme(keyPair)
+    return signer.sign(hash)
 
 fps_results = []
 
@@ -91,31 +121,34 @@ signal.signal(signal.SIGINT, sigint_handler)
 def send_image(conn, idx):
   print(f"Sending frame {idx}")
   image = cv2.imread(f"{frame_dir}/{frame_file_start}-{idx:04d}.jpg")
-  b = bytearray(cv2.imencode('.jpg', image)[1])
+  ob = bytearray(cv2.imencode('.jpg', image)[1])
 
   #print("len(b):", len(b))
 
-  if use_security:
-    #print(b64encode(b)[-32:])
-    #print(len(b))
-    #cipher = ChaCha20.new(key=key)
-    #b = cipher.encrypt(b)
-    
-    #b = cipher.nonce + b
-    #print(f"nonce length: {len(cipher.nonce)}")
-    signature = create_signature(b)
+  b = ob
+  if use_encryption:
     cipher = ChaCha20.new(key=key)
-    b = cipher.encrypt(b)
-    
-    # print(len(signature)) # 56
-    b = bytearray(cipher.nonce + signature + b)
-    #print("Encrypted!")
+    b = cipher.encrypt(ob)
+    # AES
+    #cipher = AES.new(key, AES.MODE_EAX)
+    #b, tag = cipher.encrypt_and_digest(ob)
 
-    # nonce = b64encode(cipher.nonce).decode('utf-8')
-    # b64t = b64encode(b).decode('utf-8')
-    # result = json.dumps({'nonce':nonce, 'ciphertext':b64t})
-    # print(result)
-    #init_len = len(b)
+    #print(f"len(tag): {len(tag)}") = 16
+    #print(f"tag: {b64encode(tag)}")
+    #print(f"nonce: {b64encode(cipher.nonce)}")
+    #print(f"cipher: {b64encode(b[0:32])}")
+    #print(f"len(nonce): {len(cipher.nonce)}")
+    #print(f"len(ob): {len(ob)}")
+    #print(f"ob: {ob[-30:]}")
+    #b = bytearray(cipher.nonce + tag + b)
+    b = bytearray(cipher.nonce + b)
+    #print(f"leb(b): {len(b)}")
+
+  if use_signature:
+    signature = create_signature_rsa(ob)
+    #print(f"signature: {signature}")
+    #print(f"len(signature): {len(signature)}")
+    b = bytearray(signature + b)
 
   # Send image metadata
   conn.mav.data_transmission_handshake_send(
@@ -237,7 +270,7 @@ def wait_heartbeat(conn):
 
 def vm_send_video():
     mavutil.set_dialect('common')
-    conn = mavutil.mavlink_connection('tcp:192.168.106.2:14541')
+    conn = mavutil.mavlink_connection('tcp:192.168.139.2:14541')
     conn.mav.heartbeat_send(mavutil.mavlink.MAV_TYPE_ONBOARD_CONTROLLER,
                                     mavutil.mavlink.MAV_AUTOPILOT_INVALID,
                                                             0, 0, 0)
